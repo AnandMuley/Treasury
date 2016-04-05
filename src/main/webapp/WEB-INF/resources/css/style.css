@@ -1,0 +1,187 @@
+@CHARSET "UTF-8";
+
+body {
+	
+}
+
+.site-title {
+	font-size: 30px;
+	font-family: Arial;
+	width: 100%;
+	margin: 1%;
+	color: #003366;
+	font-weight: bolder;
+}
+
+.header-panel {
+	width: 100%;
+	height: 40px;
+	background-color: orange;
+	font-size: 25px;
+	padding-top: 10px;
+	font-family: Arial;
+	text-align: center;
+	color: white;
+}
+
+.header-tab {
+	width: 30%;
+	float: left;
+}
+
+.header-tab a {
+	text-decoration: none;
+	color: white;
+}
+
+.header-tab:HOVER {
+	border-bottom: solid 2px green;
+	cursor: pointer;
+}
+
+.users-table {
+	position: relative;
+	top: 10px;
+	left: 32%;
+	width: 25%;
+	border: solid 1px #bfbfbf;
+	padding: 10px;
+}
+
+.users-table .row {
+	margin: 10px;
+}
+
+.users-table .row input {
+	width: 100%;
+	height: 30px;
+	border: solid 1px #bfbfbf;
+	border-radius: 2px;
+	padding-left: 8px;
+	font-size: 15px;
+}
+
+button {
+	height: 40px;
+	width: 25%;
+	border-radius: 3px;
+	border: solid 1px #0159A2;
+	background-color: #0159A2;
+	font-size: 20px;
+	color: white;
+}
+
+select {
+	height: 40px;
+	width: 40%;
+	border-radius: 3px;
+	border: solid 1px #bfbfbf;
+	font-size: 15px;
+	color: #bfbfbf;
+	background-color: #f2f2f2;
+}
+
+#mode {
+	width: 100%;
+}
+
+#usersel {
+	width: 100%;
+}
+
+button:HOVER {
+	cursor: pointer;
+}
+
+.message {
+	background: #66ff8c;
+	width: 30%;
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+	border-radius: 3px;
+	border: solid 1px #33ff66;
+	position: relative;
+	top: 10px;
+	left: 30%;
+	color: #00b32d;
+	font-family: Arial;
+	font-size: 15px;
+}
+
+.text-label {
+	font-family: Arial;
+	font-size: 20px;
+	color: #bfbfbf;
+	padding-top: 10px;
+}
+
+<!--
+Column Definition -->.col-1 {
+	float: left;
+	width: 10%;
+	margin: 5px 0px 5px 0px;
+	vertical-align: middle;
+}
+
+.col-2 {
+	float: left;
+	width: 20%;
+	margin: 5px 0px 5px 0px;
+	vertical-align: middle;
+}
+
+.col-3 {
+	float: left;
+	width: 30%;
+	margin: 5px 0px 5px 0px;
+	vertical-align: middle;
+}
+
+.col-4 {
+	float: left;
+	width: 40%;
+	margin: 5px 0px 5px 0px;
+	vertical-align: middle;
+}
+
+.col-5 {
+	float: left;
+	width: 50%;
+	margin: 5px 0px 5px 0px;
+	vertical-align: middle;
+}
+
+.col-6 {
+	float: left;
+	width: 60%;
+	margin: 5px 0px 5px 0px;
+	vertical-align: middle;
+}
+
+.col-7 {
+	float: left;
+	width: 70%;
+	margin: 5px 0px 5px 0px;
+	vertical-align: middle;
+}
+
+.col-8 {
+	float: left;
+	width: 80%;
+	margin: 5px 0px 5px 0px;
+	vertical-align: middle;
+}
+
+.col-9 {
+	float: left;
+	width: 90%;
+	margin: 5px 0px 5px 0px;
+	vertical-align: middle;
+}
+
+.col-10 {
+	float: left;
+	width: 100%;
+	margin: 5px 0px 5px 0px;
+	vertical-align: middle;
+}
