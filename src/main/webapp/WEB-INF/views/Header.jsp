@@ -20,6 +20,6 @@
 		<a href="${pageContext.request.contextPath}/payments">Payments</a>
 	</div>
 	<div class="header-tab">
-		<a href="#">Dashboard</a>
+		<a href="${pageContext.request.contextPath}/dashboard">Dashboard</a>
 	</div>
 </div>

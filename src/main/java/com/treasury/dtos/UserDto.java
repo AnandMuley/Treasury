@@ -6,6 +6,7 @@ public class UserDto {
 	private String name;
 	private long contactNo;
 	private String flatNo;
+	private Double amountDue;
 
 	public String getId() {
 		return id;
@@ -39,10 +40,19 @@ public class UserDto {
 		this.flatNo = flatNo;
 	}
 
+	public Double getAmountDue() {
+		return amountDue;
+	}
+
+	public void setAmountDue(Double amountDue) {
+		this.amountDue = amountDue;
+	}
+
 	@Override
 	public String toString() {
 		return "UserDto [id=" + id + ", name=" + name + ", contactNo="
-				+ contactNo + ", flatNo=" + flatNo + "]";
+				+ contactNo + ", flatNo=" + flatNo + ", amountDue=" + amountDue
+				+ "]";
 	}
 
 }
