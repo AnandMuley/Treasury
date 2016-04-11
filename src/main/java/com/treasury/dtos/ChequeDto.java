@@ -1,21 +1,10 @@
 package com.treasury.dtos;
 
-
 public class ChequeDto {
 
-	private String date;
 	private String bankDetails;
 	private String chequeNo;
-	private Double amount;
-	private String submittedDt;
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
+	private String chequeDt;
 
 	public String getBankDetails() {
 		return bankDetails;
@@ -33,27 +22,18 @@ public class ChequeDto {
 		this.chequeNo = chequeNo;
 	}
 
-	public Double getAmount() {
-		return amount;
+	public String getChequeDt() {
+		return chequeDt;
 	}
 
-	public void setAmount(Double amount) {
-		this.amount = amount;
-	}
-
-	public String getSubmittedDt() {
-		return submittedDt;
-	}
-
-	public void setSubmittedDt(String submittedDt) {
-		this.submittedDt = submittedDt;
+	public void setChequeDt(String chequeDt) {
+		this.chequeDt = chequeDt;
 	}
 
 	@Override
 	public String toString() {
-		return "ChequeDto [date=" + date + ", bankDetails=" + bankDetails
-				+ ", chequeNo=" + chequeNo + ", amount=" + amount
-				+ ", submittedDt=" + submittedDt + "]";
+		return "ChequeDto [bankDetails=" + bankDetails + ", chequeNo="
+				+ chequeNo + ", chequeDt=" + chequeDt + "]";
 	}
 
 }

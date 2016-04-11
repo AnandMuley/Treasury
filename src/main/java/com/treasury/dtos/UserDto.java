@@ -4,7 +4,7 @@ public class UserDto {
 
 	private String id;
 	private String name;
-	private long contactNo;
+	private Long contactNo;
 	private String flatNo;
 	private Double amountDue;
 
@@ -24,11 +24,11 @@ public class UserDto {
 		this.name = name;
 	}
 
-	public long getContactNo() {
+	public Long getContactNo() {
 		return contactNo;
 	}
 
-	public void setContactNo(long contactNo) {
+	public void setContactNo(Long contactNo) {
 		this.contactNo = contactNo;
 	}
 

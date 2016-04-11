@@ -16,7 +16,7 @@ body {
 .header-panel {
 	width: 100%;
 	height: 40px;
-	background-color: orange;
+	background-color: #106CC8;
 	font-size: 25px;
 	padding-top: 10px;
 	font-family: Arial;
@@ -35,30 +35,40 @@ body {
 }
 
 .header-tab:HOVER {
-	border-bottom: solid 2px green;
+	border-bottom: solid 2px white;
 	cursor: pointer;
 }
 
-.users-table {
-	position: relative;
-	top: 10px;
-	left: 20%;
-	width: 25%;
-	border: solid 1px #bfbfbf;
-	padding: 10px;
-	background-color: #b3d1ff;
+.users-container{
+	width: 30%;
+	height: 20%;
+	padding-top: 20px;
+	padding-left: 20px;
 	float: left;
 }
 
+.user-details-container{
+	width: 40%;
+	float: right;	
+}
+
+.users-table {
+	border: solid 1px #bfbfbf;
+	padding: 10px;
+	background-color: #F6F6F6;
+}
+
 .payments-table {
-	position: relative;
-	top: 10px;
 	left: 34%;
 	width: 25%;
 	border: solid 1px #bfbfbf;
 	padding: 10px;
-	background-color: #b3d1ff;
-	float: left;
+	background-color: #F6F6F6;
+}
+
+.payments-container{
+	width: 100%;
+	padding-top: 20px;
 }
 
 .users-table .row,.payments-table .row {
@@ -78,8 +88,8 @@ button {
 	height: 40px;
 	width: 25%;
 	border-radius: 3px;
-	border: solid 1px #0159A2;
-	background-color: #0159A2;
+	border: solid 1px #106CC8;
+	background-color: #106CC8;
 	font-size: 20px;
 	color: white;
 }
@@ -91,7 +101,7 @@ select {
 	border: solid 1px #bfbfbf;
 	font-size: 15px;
 	color: #bfbfbf;
-	background-color: #f2f2f2;
+	background-color: white;
 }
 
 #mode {
@@ -108,23 +118,35 @@ button:HOVER {
 
 .message {
 	background: #66ff8c;
-	width: 30%;
+	width: 100%;
 	text-align: center;
 	padding: 10px 0px 10px 0px;
 	border-radius: 3px;
 	border: solid 1px #33ff66;
 	position: relative;
 	top: 10px;
-	left: 30%;
 	color: #00b32d;
 	font-family: Arial;
 	font-size: 15px;
 }
 
+.payment-message {
+	background: #66ff8c;
+	width: 40%;
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+	border-radius: 3px;
+	border: solid 1px #33ff66;
+	color: #00b32d;
+	font-family: Arial;
+	font-size: 15px;
+	margin-top: 20px;
+}
+
 .text-label {
 	font-family: Arial;
 	font-size: 20px;
-	color: #0159A2;
+	color: #106CC8;
 	padding-top: 10px;
 }
 
@@ -216,12 +238,12 @@ Column Definition -->.col-1 {
 
 .date-panel .value, .amount-panel .value {
 	font-size: 30px;
-	color: #2eb82e;
+	color: #F4511E;
 }
 
 .date-panel .label, .amount-panel .label {
 	font-size: 20px;
-	color: #005ce6;
+	color: #106CC8;
 }
 
 .finance-table-title {
@@ -244,7 +266,7 @@ Column Definition -->.col-1 {
 .finance-table thead {
 	font-family: Arial;
 	font-size: 20px;
-	background-color: #005ce6;
+	background-color: #106CC8;
 }
 
 .finance-table thead td {
@@ -257,7 +279,7 @@ Column Definition -->.col-1 {
 }
 
 .finance-table tbody tr {
-	background-color: #99c2ff;
+	background-color: #F6F6F6;
 }
 
 .finance-table tbody tr:HOVER {
@@ -276,10 +298,11 @@ table, tr, td {
 }
 
 .users-table-container{
-	float: right;
-	width: 40%;
-	padding-right: 8%;
 	font-family: Arial;
+	width: 40%;
+	float: right;
+	padding-top: 20px;
+	padding-right: 20px;
 }
 
 .users-table-container table {
@@ -293,10 +316,10 @@ table, tr, td {
 
 .users-table-container table thead tr{
 	font-size: 20px;
-	background-color: #005CE6;
+	background-color: #106CC8;
 }
 
 .users-table-container table tbody tr{
 	font-size: 16px;
-	background-color: #99C2FF;
+	background-color: #F6F6F6;
 }

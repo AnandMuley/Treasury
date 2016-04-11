@@ -1,12 +1,9 @@
 package com.treasury.dtos;
 
-
 public class NetBankingDto {
 
 	private String referenceNo;
 	private String accountNo;
-	private String date;
-	private Double amount;
 	private String bankDetails;
 
 	public String getReferenceNo() {
@@ -25,22 +22,6 @@ public class NetBankingDto {
 		this.accountNo = accountNo;
 	}
 
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public Double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Double amount) {
-		this.amount = amount;
-	}
-
 	public String getBankDetails() {
 		return bankDetails;
 	}
@@ -52,8 +33,7 @@ public class NetBankingDto {
 	@Override
 	public String toString() {
 		return "NetBankingDto [referenceNo=" + referenceNo + ", accountNo="
-				+ accountNo + ", date=" + date + ", amount=" + amount
-				+ ", bankDetails=" + bankDetails + "]";
+				+ accountNo + ", bankDetails=" + bankDetails + "]";
 	}
 
 }

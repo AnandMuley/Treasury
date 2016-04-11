@@ -1,5 +1,7 @@
 package com.treasury.beans;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,9 +12,10 @@ public class PaymentBean {
 	private String id;
 	private String userId;
 	private String mode;
+	private Double amount;
+	private Date paymentDt;
 	private ChequeBean chequeBean;
 	private NetBankingBean netBankingBean;
-	private CashBean cashBean;
 
 	public String getId() {
 		return id;
@@ -38,6 +41,22 @@ public class PaymentBean {
 		this.mode = mode;
 	}
 
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+	public Date getPaymentDt() {
+		return paymentDt;
+	}
+
+	public void setPaymentDt(Date paymentDt) {
+		this.paymentDt = paymentDt;
+	}
+
 	public ChequeBean getChequeBean() {
 		return chequeBean;
 	}
@@ -54,19 +73,12 @@ public class PaymentBean {
 		this.netBankingBean = netBankingBean;
 	}
 
-	public CashBean getCashBean() {
-		return cashBean;
-	}
-
-	public void setCashBean(CashBean cashBean) {
-		this.cashBean = cashBean;
-	}
-
 	@Override
 	public String toString() {
 		return "PaymentBean [id=" + id + ", userId=" + userId + ", mode="
-				+ mode + ", chequeBean=" + chequeBean + ", netBankingBean="
-				+ netBankingBean + ", cashBean=" + cashBean + "]";
+				+ mode + ", amount=" + amount + ", paymentDt=" + paymentDt
+				+ ", chequeBean=" + chequeBean + ", netBankingBean="
+				+ netBankingBean + "]";
 	}
 
 }

@@ -1,13 +1,10 @@
 package com.treasury.beans;
 
-import java.util.Date;
 
 public class NetBankingBean {
 
 	private String referenceNo;
 	private String accountNo;
-	private Date date;
-	private Double amount;
 	private String bankDetails;
 
 	public String getReferenceNo() {
@@ -26,22 +23,6 @@ public class NetBankingBean {
 		this.accountNo = accountNo;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public Double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Double amount) {
-		this.amount = amount;
-	}
-
 	public String getBankDetails() {
 		return bankDetails;
 	}
@@ -53,8 +34,7 @@ public class NetBankingBean {
 	@Override
 	public String toString() {
 		return "NetBankingBean [referenceNo=" + referenceNo + ", accountNo="
-				+ accountNo + ", date=" + date + ", amount=" + amount
-				+ ", bankDetails=" + bankDetails + "]";
+				+ accountNo + ", bankDetails=" + bankDetails + "]";
 	}
 
 }

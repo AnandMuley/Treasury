@@ -4,19 +4,9 @@ import java.util.Date;
 
 public class ChequeBean {
 
-	private Date date;
 	private String bankDetails;
 	private String chequeNo;
-	private Double amount;
 	private Date submittedDt;
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
 
 	public String getBankDetails() {
 		return bankDetails;
@@ -34,14 +24,6 @@ public class ChequeBean {
 		this.chequeNo = chequeNo;
 	}
 
-	public Double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(Double amount) {
-		this.amount = amount;
-	}
-
 	public Date getSubmittedDt() {
 		return submittedDt;
 	}
@@ -52,9 +34,8 @@ public class ChequeBean {
 
 	@Override
 	public String toString() {
-		return "ChequeBean [date=" + date + ", bankDetails=" + bankDetails
-				+ ", chequeNo=" + chequeNo + ", amount=" + amount
-				+ ", submittedDt=" + submittedDt + "]";
+		return "ChequeBean [bankDetails=" + bankDetails + ", chequeNo="
+				+ chequeNo + ", submittedDt=" + submittedDt + "]";
 	}
 
 }

@@ -39,9 +39,9 @@ public class DashboardService {
 	private MongoTemplate mongoTemplate;
 
 	public DashboardDto getDashboardDetails() {
-		Aggregation aggregation = newAggregation(
-				group("userId").sum("cashBean.amount").as("amount"),
-				project("amount").and("userId").previousOperation());
+		Aggregation aggregation = newAggregation(group("userId").sum("amount")
+				.as("amount"), project("amount").and("userId")
+				.previousOperation());
 
 		AggregationResults<UserAmountBean> userAmtResults = mongoTemplate
 				.aggregate(aggregation, PaymentBean.class, UserAmountBean.class);

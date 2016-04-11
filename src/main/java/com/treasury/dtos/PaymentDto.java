@@ -5,9 +5,10 @@ public class PaymentDto {
 	private String id;
 	private String userId;
 	private String mode;
+	private Double amount;
+	private String paymentDt;
 	private ChequeDto chequeDto;
 	private NetBankingDto netBankingDto;
-	private CashDto cashDto;
 
 	public String getId() {
 		return id;
@@ -33,6 +34,22 @@ public class PaymentDto {
 		this.mode = mode;
 	}
 
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+	public String getPaymentDt() {
+		return paymentDt;
+	}
+
+	public void setPaymentDt(String paymentDt) {
+		this.paymentDt = paymentDt;
+	}
+
 	public ChequeDto getChequeDto() {
 		return chequeDto;
 	}
@@ -49,19 +66,12 @@ public class PaymentDto {
 		this.netBankingDto = netBankingDto;
 	}
 
-	public CashDto getCashDto() {
-		return cashDto;
-	}
-
-	public void setCashDto(CashDto cashDto) {
-		this.cashDto = cashDto;
-	}
-
 	@Override
 	public String toString() {
 		return "PaymentDto [id=" + id + ", userId=" + userId + ", mode=" + mode
+				+ ", amount=" + amount + ", paymentDt=" + paymentDt
 				+ ", chequeDto=" + chequeDto + ", netBankingDto="
-				+ netBankingDto + ", cashDto=" + cashDto + "]";
+				+ netBankingDto + "]";
 	}
 
 }

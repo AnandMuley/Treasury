@@ -3,13 +3,13 @@ package com.treasury.beans;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="users")
+@Document(collection = "users")
 public class UserBean {
 
 	@Id
 	private String id;
 	private String name;
-	private long contactNo;
+	private Long contactNo;
 	private String flatNo;
 
 	public String getId() {
@@ -28,11 +28,11 @@ public class UserBean {
 		this.name = name;
 	}
 
-	public long getContactNo() {
+	public Long getContactNo() {
 		return contactNo;
 	}
 
-	public void setContactNo(long contactNo) {
+	public void setContactNo(Long contactNo) {
 		this.contactNo = contactNo;
 	}
 
