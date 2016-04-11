@@ -9,7 +9,7 @@
 <body>
 <div align="center" class="payments-container">
 <div align="center" class="payments-table">
-	<form action="payments/add" method="post">
+	<form action="${pageContext.request.contextPath}/payments/add" method="post">
 			<div class="row">
 				<select id="usersel" name="userId">
 					<option value="">Select User</option>

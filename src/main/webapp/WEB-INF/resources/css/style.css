@@ -1,11 +1,31 @@
 @CHARSET "UTF-8";
 
-.users-panel-container{
+.edit-user-container{
 	width: 30%;
+	float: left;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.actions-panel{
+	padding: 10px 0px 20px 0px;
+	font-family: Arial;
+}
+
+.actions-panel > div{
+	float: left;
+}
+
+.actions-panel .delete{
+	margin-left: 10px;
+}
+
+.users-panel-container{
+	width: 25%;
 	height: 40px;
 	float: right;
 	margin-top: 20px;
-	margin-right: 20px;
+	margin-right: 120px;
 }
 
 .users-panel-container .panel-header{

@@ -78,4 +78,8 @@ public class PaymentService {
 		}
 	}
 
+	public void removeAll(String userId) {
+		paymentRepository.removeByUserId(userId);
+	}
+
 }

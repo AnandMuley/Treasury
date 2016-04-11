@@ -1,5 +1,6 @@
 package com.treasury.repositories;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -11,5 +12,7 @@ public interface PaymentRepository extends MongoRepository<PaymentBean, String> 
 
 	@Query(value = "{'$group':{_id:'$userId',total:{'$sum':'$cashBean.amount'}}}")
 	Map<String, Double> getTotalAmount();
+
+	List<PaymentBean> removeByUserId(String userId);
 
 }

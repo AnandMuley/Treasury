@@ -3,10 +3,61 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Users</title>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/lib/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Users.js"></script>
 </head>
 <body>
 	<%@include file="Header.jsp"%>
 	<div class="users-container">
+		<form id="usrAddEditFrm" action="${pageContext.request.contextPath}/users/create"
+			method="post">
+			<input id="userID" type="hidden" name="id" value="0"/>
+			<input id="usrEditLink" type="hidden" value="${pageContext.request.contextPath}/users/save" />
+			<input id="usrAddLink" type="hidden" value="${pageContext.request.contextPath}/users/create" />
+			<div align="center" class="users-table">
+				<div class="row">
+					<input id="name" name="name" type="text" placeholder="Name" />
+				</div>
+				<div class="row">
+					<input id="flatNo" name="flatNo" type="text" placeholder="Flat No" />
+				</div>
+				<div class="row">
+					<input id="contactNo" name="contactNo" type="text" placeholder="Contact No" />
+				</div>
+				<div class="row">
+					<button id="addBtn" type="button">ADD</button>
+					<button id="saveBtn" type="button">SAVE</button>
+				</div>
+			</div>
+		</form>
+		<c:if test="${message!=null}">
+			<div class="message">${message}</div>
+		</c:if>
+	</div>
+	<form id="userDelFrm" action="${pageContext.request.contextPath}/users/delete" method="post">
+		<input id="uid" type="hidden" name="id" value="0"/>
+	</form>
+	<c:if test="${fn:length(users)>0}">
+		<div class="users-panel-container">
+			<div class="panel-header">Existing Users</div>
+			<c:forEach items="${users}" var="user" varStatus="stat">
+				<div class="panel-item">
+					<div class="name">${user.name}</div>
+					<div class="contact-no"><span>Mob:</span> ${user.contactNo}</div>
+					<div class="flat-no"><span>Flat No:</span> ${user.flatNo}</div>
+					<div class="actions-panel">
+						<div class="edit" title="${user.name}|${user.flatNo}|${user.contactNo}|${user.id}">
+							<img width="20" alt="" src="${pageContext.request.contextPath}/resources/images/document_edit.png">
+						</div>
+						<div class="delete" title="${user.id}">
+							<img width="20" alt="" src="${pageContext.request.contextPath}/resources/images/delete.png">
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</c:if>
+	<%-- <div class="edit-user-container">
 		<form action="${pageContext.request.contextPath}/users/create"
 			method="post">
 			<div align="center" class="users-table">
@@ -27,18 +78,6 @@
 		<c:if test="${message!=null}">
 			<div class="message">${message}</div>
 		</c:if>
-	</div>
-	<c:if test="${fn:length(users)>0}">
-		<div class="users-panel-container">
-			<div class="panel-header">Existing Users</div>
-			<c:forEach items="${users}" var="user" varStatus="stat">
-				<div class="panel-item">
-					<div class="name">${user.name}</div>
-					<div class="contact-no"><span>Mob:</span> ${user.contactNo}</div>
-					<div class="flat-no"><span>Flat No:</span> ${user.flatNo}</div>
-				</div>
-			</c:forEach>
-		</div>
-	</c:if>
+	</div> --%>
 </body>
 </html>

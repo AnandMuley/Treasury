@@ -15,6 +15,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private PaymentService paymentService;
 
 	public void create(UserDto userDto) {
 		UserBean userBean = new UserBean();
@@ -37,6 +40,19 @@ public class UserService {
 			userDtos.add(userDto);
 		}
 		return userDtos;
+	}
+
+	public void delete(String id) {
+		userRepository.delete(id);
+		paymentService.removeAll(id);
+	}
+
+	public void save(UserDto userDto) {
+		UserBean bean = userRepository.findOne(userDto.getId());
+		bean.setContactNo(userDto.getContactNo());
+		bean.setFlatNo(userDto.getFlatNo());
+		bean.setName(userDto.getName());
+		userRepository.save(bean);
 	}
 
 }

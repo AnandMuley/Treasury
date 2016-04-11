@@ -26,5 +26,22 @@ public class UserController {
 		model.addAttribute("users", userDtos);
 		return "Users";
 	}
+	
+	@RequestMapping(value = "save", method = RequestMethod.POST)
+	public String saveUser(UserDto userDto, Model model) {
+		userService.save(userDto);
+		model.addAttribute("message", "Details saved successfully !");
+		List<UserDto> userDtos = userService.getAll();
+		model.addAttribute("users", userDtos);
+		return "Users";
+	}
+	
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public String deleteUser(UserDto userDto, Model model) {
+		userService.delete(userDto.getId());
+		List<UserDto> userDtos = userService.getAll();
+		model.addAttribute("users", userDtos);
+		return "Users";
+	}
 
 }
