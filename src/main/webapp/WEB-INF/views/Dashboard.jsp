@@ -12,7 +12,7 @@
 </div>
 
 <div class="amount-panel">
-	<div class="label">Expected Amount</div>
+	<div class="label">Expected</div>
 	<div class="value">&#x20B9; ${dashboardDto.expectedAmount}</div>
 </div>
 <c:if test="${fn:length(dashboardDto.userDtos)>0}">

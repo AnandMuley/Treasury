@@ -29,27 +29,15 @@
 		</c:if>
 	</div>
 	<c:if test="${fn:length(users)>0}">
-		<div class="users-table-container">
-			<table>
-				<thead>
-					<tr>
-						<td>Sr.No</td>
-						<td>Name</td>
-						<td>FlatNo</td>
-						<td>ContactNo</td>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${users}" var="user" varStatus="stat">
-						<tr>
-							<td>${stat.index+1}</td>
-							<td>${user.name}</td>
-							<td>${user.flatNo}</td>
-							<td>${user.contactNo}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+		<div class="users-panel-container">
+			<div class="panel-header">Existing Users</div>
+			<c:forEach items="${users}" var="user" varStatus="stat">
+				<div class="panel-item">
+					<div class="name">${user.name}</div>
+					<div class="contact-no"><span>Mob:</span> ${user.contactNo}</div>
+					<div class="flat-no"><span>Flat No:</span> ${user.flatNo}</div>
+				</div>
+			</c:forEach>
 		</div>
 	</c:if>
 </body>

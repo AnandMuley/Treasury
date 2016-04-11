@@ -1,5 +1,54 @@
 @CHARSET "UTF-8";
 
+.users-panel-container{
+	width: 30%;
+	height: 40px;
+	float: right;
+	margin-top: 20px;
+	margin-right: 20px;
+}
+
+.users-panel-container .panel-header{
+	font-size: 25px;
+	padding: 10px;
+	border: solid 1px #106CC8;
+	border-top-right-radius:10px;
+	border-top-left-radius:10px;
+	background-color: #106CC8;
+	color: white;
+	font-family: Arial;
+}
+
+.panel-item{
+	border: solid 1px #BFBFBF;
+	padding: 10px;
+	background-color: #F6F6F6;
+}
+
+.panel-item:HOVER{
+	border: solid 1px #DE3641;
+	padding: 10px;
+	background-color: #DE3641;
+	color: white;
+	cursor: pointer;
+}
+
+.panel-item .name{
+	font-size: 20px;
+	font-family: Arial;
+	font-weight: bold;
+}
+
+.panel-item .contact-no{
+	font-size: 15px;
+	font-family: Arial;
+}
+
+.panel-item .flat-no{
+	font-size: 15px;
+	font-family: Arial;
+}
+
 body {
 	
 }
@@ -9,7 +58,7 @@ body {
 	font-family: Arial;
 	width: 100%;
 	margin: 1%;
-	color: #003366;
+	color: #DE3641;
 	font-weight: bolder;
 }
 
@@ -88,8 +137,8 @@ button {
 	height: 40px;
 	width: 25%;
 	border-radius: 3px;
-	border: solid 1px #106CC8;
-	background-color: #106CC8;
+	border: solid 1px #DE3641;
+	background-color: #DE3641;
 	font-size: 20px;
 	color: white;
 }
@@ -146,7 +195,7 @@ button:HOVER {
 .text-label {
 	font-family: Arial;
 	font-size: 20px;
-	color: #106CC8;
+	color: #DE3641;
 	padding-top: 10px;
 }
 
@@ -238,12 +287,11 @@ Column Definition -->.col-1 {
 
 .date-panel .value, .amount-panel .value {
 	font-size: 30px;
-	color: #F4511E;
+	color: #DE3641;
 }
 
 .date-panel .label, .amount-panel .label {
 	font-size: 20px;
-	color: #106CC8;
 }
 
 .finance-table-title {
