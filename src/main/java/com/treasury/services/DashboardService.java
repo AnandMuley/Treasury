@@ -38,6 +38,9 @@ public class DashboardService {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
+	@Autowired
+	private DataExtractorService dataExtractorService;
+
 	public DashboardDto getDashboardDetails() {
 		Aggregation aggregation = newAggregation(group("userId").sum("amount")
 				.as("amount"), project("amount").and("userId")
@@ -67,6 +70,19 @@ public class DashboardService {
 			dashboardDto.getUserDtos().add(userDto);
 		}
 
+		List<String> userIds = dataExtractorService.getUserIds(amountBeans);
+		List<UserBean> userBeans = userRepository.findAll();
+		for (UserBean userBean : userBeans) {
+			if (!userIds.contains(userBean.getId())) {
+				UserDto userDto = new UserDto();
+				userDto.setAmountDue(expectedAmount);
+				userDto.setContactNo(userBean.getContactNo());
+				userDto.setFlatNo(userBean.getFlatNo());
+				userDto.setId(userBean.getId());
+				userDto.setName(userBean.getName());
+				dashboardDto.getUserDtos().add(userDto);
+			}
+		}
 		return dashboardDto;
 	}
 

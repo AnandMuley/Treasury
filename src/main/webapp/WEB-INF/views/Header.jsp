@@ -17,9 +17,12 @@
 		<a href="${pageContext.request.contextPath}/users">Users</a>
 	</div>
 	<div class="header-tab">
-		<a href="${pageContext.request.contextPath}/payments">Payments</a>
+		<a href="${pageContext.request.contextPath}/payments">Pay</a>
 	</div>
 	<div class="header-tab">
-		<a href="${pageContext.request.contextPath}/dashboard">Dashboard</a>
+		<a href="${pageContext.request.contextPath}/reports">Reports</a>
+	</div>
+	<div class="header-tab">
+		<a href="${pageContext.request.contextPath}/dashboard">Dues</a>
 	</div>
 </div>

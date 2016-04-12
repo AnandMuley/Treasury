@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Users</title>
+<title>Payments</title>
 <%@include file="Header.jsp" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Payment.js"></script>
 </head>
@@ -16,6 +16,56 @@
 					<c:forEach items="${users}" var="user">
 						<option value="${user.id}">${user.name}</option>		
 					</c:forEach>
+				</select>
+			</div>
+			<div class="row">
+				<select id="fromMonth" name="fromDateDto.month">
+					<option value="">From Month</option>
+					<option value="1">Jan</option>
+					<option value="2">Feb</option>
+					<option value="3">Mar</option>
+					
+					<option value="4">Apr</option>
+					<option value="5">May</option>
+					<option value="6">Jun</option>
+					
+					<option value="7">Jul</option>
+					<option value="8">Aug</option>
+					<option value="9">Sep</option>
+					
+					<option value="10">Oct</option>
+					<option value="11">Nov</option>
+					<option value="12">Dec</option>
+				</select>
+				<select id="fromYear" name="fromDateDto.year">
+					<option value="">From Year</option>
+					<option value="2015">2015</option>
+					<option value="2016">2016</option>
+				</select>
+			</div>
+			<div class="row">
+				<select id="toMonth" name="toDateDto.month">
+					<option value="">To Month</option>
+					<option value="1">Jan</option>
+					<option value="2">Feb</option>
+					<option value="3">Mar</option>
+					
+					<option value="4">Apr</option>
+					<option value="5">May</option>
+					<option value="6">Jun</option>
+					
+					<option value="7">Jul</option>
+					<option value="8">Aug</option>
+					<option value="9">Sep</option>
+					
+					<option value="10">Oct</option>
+					<option value="11">Nov</option>
+					<option value="12">Dec</option>
+				</select>
+				<select id="toYear" name="toDateDto.year">
+					<option value="">To Year</option>
+					<option value="2015">2015</option>
+					<option value="2016">2016</option>
 				</select>
 			</div>
 			<div class="row">

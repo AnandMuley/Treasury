@@ -9,6 +9,9 @@ public class PaymentDto {
 	private String paymentDt;
 	private ChequeDto chequeDto;
 	private NetBankingDto netBankingDto;
+	private DateDto fromDateDto;
+	private DateDto toDateDto;
+	private String name;
 
 	public String getId() {
 		return id;
@@ -66,12 +69,37 @@ public class PaymentDto {
 		this.netBankingDto = netBankingDto;
 	}
 
+	public DateDto getFromDateDto() {
+		return fromDateDto;
+	}
+
+	public void setFromDateDto(DateDto fromDateDto) {
+		this.fromDateDto = fromDateDto;
+	}
+
+	public DateDto getToDateDto() {
+		return toDateDto;
+	}
+
+	public void setToDateDto(DateDto toDateDto) {
+		this.toDateDto = toDateDto;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Override
 	public String toString() {
 		return "PaymentDto [id=" + id + ", userId=" + userId + ", mode=" + mode
 				+ ", amount=" + amount + ", paymentDt=" + paymentDt
 				+ ", chequeDto=" + chequeDto + ", netBankingDto="
-				+ netBankingDto + "]";
+				+ netBankingDto + ", fromDateDto=" + fromDateDto
+				+ ", toDateDto=" + toDateDto + ", name=" + name + "]";
 	}
 
 }

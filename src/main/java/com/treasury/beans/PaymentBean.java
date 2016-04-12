@@ -16,6 +16,8 @@ public class PaymentBean {
 	private Date paymentDt;
 	private ChequeBean chequeBean;
 	private NetBankingBean netBankingBean;
+	private DateBean fromDate = new DateBean();
+	private DateBean toDate = new DateBean();
 
 	public String getId() {
 		return id;
@@ -73,12 +75,29 @@ public class PaymentBean {
 		this.netBankingBean = netBankingBean;
 	}
 
+	public DateBean getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(DateBean fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public DateBean getToDate() {
+		return toDate;
+	}
+
+	public void setToDate(DateBean toDate) {
+		this.toDate = toDate;
+	}
+
 	@Override
 	public String toString() {
 		return "PaymentBean [id=" + id + ", userId=" + userId + ", mode="
 				+ mode + ", amount=" + amount + ", paymentDt=" + paymentDt
 				+ ", chequeBean=" + chequeBean + ", netBankingBean="
-				+ netBankingBean + "]";
+				+ netBankingBean + ", fromDate=" + fromDate + ", toDate="
+				+ toDate + "]";
 	}
 
 }

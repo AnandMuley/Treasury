@@ -34,6 +34,12 @@ public class PaymentService {
 		paymentBean.setUserId(paymentDto.getUserId());
 		paymentBean.setAmount(paymentDto.getAmount());
 		paymentBean.setPaymentDt(getDate(paymentDto.getPaymentDt(), DDMMYYYY));
+		paymentBean.getFromDate().setMonth(
+				paymentDto.getFromDateDto().getMonth());
+		paymentBean.getFromDate()
+				.setYear(paymentDto.getFromDateDto().getYear());
+		paymentBean.getToDate().setMonth(paymentDto.getToDateDto().getMonth());
+		paymentBean.getToDate().setYear(paymentDto.getToDateDto().getYear());
 		populateData(paymentDto, paymentBean);
 		paymentRepository.save(paymentBean);
 		paymentDto.setId(paymentBean.getId());
@@ -59,7 +65,7 @@ public class PaymentService {
 			chequeBean.setBankDetails(paymentDto.getChequeDto()
 					.getBankDetails());
 			chequeBean.setChequeNo(paymentDto.getChequeDto().getChequeNo());
-			chequeBean.setSubmittedDt(getDate(paymentDto.getChequeDto()
+			chequeBean.setChequeDt(getDate(paymentDto.getChequeDto()
 					.getChequeDt(), DDMMYYYY));
 			paymentBean.setChequeBean(chequeBean);
 			break;

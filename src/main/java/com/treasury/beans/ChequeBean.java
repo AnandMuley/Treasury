@@ -6,7 +6,7 @@ public class ChequeBean {
 
 	private String bankDetails;
 	private String chequeNo;
-	private Date submittedDt;
+	private Date chequeDt;
 
 	public String getBankDetails() {
 		return bankDetails;
@@ -24,18 +24,18 @@ public class ChequeBean {
 		this.chequeNo = chequeNo;
 	}
 
-	public Date getSubmittedDt() {
-		return submittedDt;
+	public Date getChequeDt() {
+		return chequeDt;
 	}
 
-	public void setSubmittedDt(Date submittedDt) {
-		this.submittedDt = submittedDt;
+	public void setChequeDt(Date chequeDt) {
+		this.chequeDt = chequeDt;
 	}
 
 	@Override
 	public String toString() {
 		return "ChequeBean [bankDetails=" + bankDetails + ", chequeNo="
-				+ chequeNo + ", submittedDt=" + submittedDt + "]";
+				+ chequeNo + ", chequeDt=" + chequeDt + "]";
 	}
 
 }

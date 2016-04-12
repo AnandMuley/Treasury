@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.treasury.dtos.DashboardDto;
+import com.treasury.dtos.ReportDto;
 import com.treasury.dtos.UserDto;
 import com.treasury.services.DashboardService;
+import com.treasury.services.ReportingService;
 import com.treasury.services.UserService;
 
 @Controller
@@ -20,6 +22,9 @@ public class HeaderController {
 
 	@Autowired
 	private DashboardService dashboardService;
+
+	@Autowired
+	private ReportingService reportingService;
 
 	@RequestMapping(value = "users")
 	public String renderUsers(Model model) {
@@ -40,6 +45,13 @@ public class HeaderController {
 		DashboardDto dashboardDto = dashboardService.getDashboardDetails();
 		model.addAttribute("dashboardDto", dashboardDto);
 		return "Dashboard";
+	}
+
+	@RequestMapping(value = "reports")
+	public String renderReports(Model model) {
+		ReportDto reportDto = reportingService.getReport();
+		model.addAttribute("report", reportDto);
+		return "Reports";
 	}
 
 }
