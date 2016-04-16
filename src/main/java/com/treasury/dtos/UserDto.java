@@ -1,12 +1,17 @@
 package com.treasury.dtos;
 
-public class UserDto {
+
+public class UserDto extends CommonDto {
 
 	private String id;
 	private String name;
 	private Long contactNo;
 	private String flatNo;
 	private Double amountDue;
+	/*
+	 * In Square Feet
+	 */
+	private Double area;
 
 	public String getId() {
 		return id;
@@ -48,11 +53,19 @@ public class UserDto {
 		this.amountDue = amountDue;
 	}
 
+	public Double getArea() {
+		return area;
+	}
+
+	public void setArea(Double area) {
+		this.area = area;
+	}
+
 	@Override
 	public String toString() {
 		return "UserDto [id=" + id + ", name=" + name + ", contactNo="
 				+ contactNo + ", flatNo=" + flatNo + ", amountDue=" + amountDue
-				+ "]";
+				+ ", area=" + area + "]";
 	}
 
 }

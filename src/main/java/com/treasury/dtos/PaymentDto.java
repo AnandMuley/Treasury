@@ -1,6 +1,6 @@
 package com.treasury.dtos;
 
-public class PaymentDto {
+public class PaymentDto extends CommonDto {
 
 	private String id;
 	private String userId;

@@ -9,21 +9,26 @@ import org.springframework.stereotype.Service;
 import com.treasury.beans.UserBean;
 import com.treasury.dtos.UserDto;
 import com.treasury.repositories.UserRepository;
+import com.treasury.utils.BeanCreatorUtil;
+import com.treasury.utils.DtoCreatorUtil;
 
 @Service
 public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private PaymentService paymentService;
 
+	@Autowired
+	private BeanCreatorUtil beanCreatorUtil;
+
+	@Autowired
+	private DtoCreatorUtil dtoCreatorUtil;
+
 	public void create(UserDto userDto) {
-		UserBean userBean = new UserBean();
-		userBean.setContactNo(userDto.getContactNo());
-		userBean.setFlatNo(userDto.getFlatNo());
-		userBean.setName(userDto.getName());
+		UserBean userBean = beanCreatorUtil.createUserBean(userDto);
 		userRepository.save(userBean);
 		userDto.setId(userBean.getId());
 	}
@@ -32,11 +37,7 @@ public class UserService {
 		List<UserBean> beans = userRepository.findAll();
 		List<UserDto> userDtos = new ArrayList<UserDto>();
 		for (UserBean userBean : beans) {
-			UserDto userDto = new UserDto();
-			userDto.setContactNo(userBean.getContactNo());
-			userDto.setFlatNo(userBean.getFlatNo());
-			userDto.setId(userBean.getId());
-			userDto.setName(userBean.getName());
+			UserDto userDto = dtoCreatorUtil.createUserDto(userBean);
 			userDtos.add(userDto);
 		}
 		return userDtos;

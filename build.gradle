@@ -26,7 +26,7 @@ repositories {
 
 dependencies {
     compile fasterXml.jsonprovider,spring.mongo,spring.jpa,spring.core,spring.web,spring.webmvc
-	compile jodatime,spring.security,commons.fileupload
+	compile jodatime,spring.security,commons.fileupload,validation.hibernate
 	compile javax.jstl,javax.el,commons.io,fasterXml.databind
     testCompile testng,jmock.core,jmock.legacy,spring.test
 }

@@ -11,6 +11,7 @@ public class UserBean {
 	private String name;
 	private Long contactNo;
 	private String flatNo;
+	private Double area;
 
 	public String getId() {
 		return id;
@@ -44,10 +45,19 @@ public class UserBean {
 		this.flatNo = flatNo;
 	}
 
+	
+	public Double getArea() {
+		return area;
+	}
+
+	public void setArea(Double area) {
+		this.area = area;
+	}
+
 	@Override
 	public String toString() {
 		return "UserBean [id=" + id + ", name=" + name + ", contactNo="
-				+ contactNo + ", flatNo=" + flatNo + "]";
+				+ contactNo + ", flatNo=" + flatNo + ", area=" + area + "]";
 	}
 
 }

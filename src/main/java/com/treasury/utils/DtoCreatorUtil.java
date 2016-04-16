@@ -12,12 +12,23 @@ import com.treasury.dtos.ChequeDto;
 import com.treasury.dtos.DateDto;
 import com.treasury.dtos.NetBankingDto;
 import com.treasury.dtos.PaymentDto;
+import com.treasury.dtos.UserDto;
 
 @Component
 public class DtoCreatorUtil {
 
 	@Autowired
 	private DateConvertorUtil dateConvertorUtil;
+
+	public UserDto createUserDto(UserBean userBean) {
+		UserDto userDto = new UserDto();
+		userDto.setContactNo(userBean.getContactNo());
+		userDto.setFlatNo(userBean.getFlatNo());
+		userDto.setId(userBean.getId());
+		userDto.setName(userBean.getName());
+		userDto.setArea(userBean.getArea());
+		return userDto;
+	}
 
 	public PaymentDto createPaymentDto(PaymentBean paymentBean,
 			UserBean userBean) {

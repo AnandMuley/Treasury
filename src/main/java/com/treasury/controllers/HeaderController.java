@@ -26,6 +26,11 @@ public class HeaderController {
 	@Autowired
 	private ReportingService reportingService;
 
+	@RequestMapping(value = "administration")
+	public String renderAdminPage() {
+		return "Administration";
+	}
+
 	@RequestMapping(value = "users")
 	public String renderUsers(Model model) {
 		List<UserDto> userDtos = userService.getAll();

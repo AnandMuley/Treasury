@@ -1,5 +1,21 @@
 @CHARSET "UTF-8";
 
+.payments-error-msg-container{
+	width: 20%;
+	float: left;
+	margin-left: 10%;
+	margin-top: 2%;
+}
+
+.error-container{
+	border: solid 1px #DE3641;
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: #e29599;
+	color: #DE3641;
+	font-family: Arial;
+}
+
 .edit-user-container {
 	width: 30%;
 	float: left;
@@ -77,7 +93,6 @@ body {
 	font-size: 30px;
 	font-family: Arial;
 	width: 100%;
-	margin: 1%;
 	color: #DE3641;
 	font-weight: bolder;
 }

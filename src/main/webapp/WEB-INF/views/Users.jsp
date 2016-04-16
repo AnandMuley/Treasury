@@ -9,20 +9,29 @@
 <body>
 	<%@include file="Header.jsp"%>
 	<div class="users-container">
-		<form id="usrAddEditFrm" action="${pageContext.request.contextPath}/users/create"
-			method="post">
+		<c:if test="${userDto.validationErrors.size()>0}">
+			<div class="error-container">
+				<c:forEach items="${userDto.validationErrors}" var="errorMsg">
+					<div class="msg">${errorMsg}</div>
+				</c:forEach>
+			</div>
+		</c:if>
+		<form id="usrAddEditFrm" action="${pageContext.request.contextPath}/users/create" method="post">
 			<input id="userID" type="hidden" name="id" value="0"/>
-			<input id="usrEditLink" type="hidden" value="${pageContext.request.contextPath}/users/save" />
-			<input id="usrAddLink" type="hidden" value="${pageContext.request.contextPath}/users/create" />
+			<input id="usrEditLink" type="hidden" value="${pageContext.request.contextPath}/users/save"/>
+			<input id="usrAddLink" type="hidden" value="${pageContext.request.contextPath}/users/create"/>
 			<div align="center" class="users-table">
 				<div class="row">
-					<input id="name" name="name" type="text" placeholder="Name" />
+					<input value="${userDto.name}" required="required" id="name" name="name" type="text" placeholder="Name"/>
 				</div>
 				<div class="row">
-					<input id="flatNo" name="flatNo" type="text" placeholder="Flat No" />
+					<input value="${userDto.flatNo}" id="flatNo" name="flatNo" type="text" placeholder="Flat No"/>
 				</div>
 				<div class="row">
-					<input id="contactNo" name="contactNo" type="text" placeholder="Contact No" />
+					<input value="${userDto.contactNo}" required="required" id="contactNo" name="contactNo" type="text" placeholder="Contact No"/>
+				</div>
+				<div class="row">
+					<input value="${userDto.area}" required="required" name="area" type="text" placeholder="Area in Sq.Ft"/>
 				</div>
 				<div class="row">
 					<button id="addBtn" type="button">ADD</button>

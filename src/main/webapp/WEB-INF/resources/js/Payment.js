@@ -3,8 +3,11 @@ $(document).ready(function(){
 	hideAll();
 	
 	$('#cash').show();
-	$('#mode').val('cash');
-	
+	if($('#mode').val()==undefined){
+		$('#mode').val('cash');	
+	}else{
+		$('#'+$('#mode').val()).show();
+	}
 	$('#mode').change(function(){
 		hideAll();
 		$('#'+$(this).val()).show();
