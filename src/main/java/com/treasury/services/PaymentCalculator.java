@@ -8,7 +8,10 @@ public class PaymentCalculator {
 	private Double rate = 2.5;
 
 	public Double calculateAmountPayable(Double area) {
-		return area * rate;
+		if (area != null) {
+			return area * rate;
+		}
+		return null;
 	}
 
 }

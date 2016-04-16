@@ -1,5 +1,21 @@
 @CHARSET "UTF-8";
 
+.amount-payable-container{
+	float: right;
+	margin-right: 9%;
+	margin-top: 1%;
+	font-family: Arial;
+}
+
+.amount-payable-container .label{
+	font-size: 20px;
+}
+
+.amount-payable-container .amount{
+	font-size: 18px;
+	color: #106CC8;
+}
+
 .payments-error-msg-container{
 	width: 20%;
 	float: left;

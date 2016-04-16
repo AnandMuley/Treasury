@@ -12,6 +12,7 @@ public class UserDto extends CommonDto {
 	 * In Square Feet
 	 */
 	private Double area;
+	private Double amountPayable;
 
 	public String getId() {
 		return id;
@@ -61,11 +62,19 @@ public class UserDto extends CommonDto {
 		this.area = area;
 	}
 
+	public Double getAmountPayable() {
+		return amountPayable;
+	}
+
+	public void setAmountPayable(Double amountPayable) {
+		this.amountPayable = amountPayable;
+	}
+
 	@Override
 	public String toString() {
 		return "UserDto [id=" + id + ", name=" + name + ", contactNo="
 				+ contactNo + ", flatNo=" + flatNo + ", amountDue=" + amountDue
-				+ ", area=" + area + "]";
+				+ ", area=" + area + ", amountPayable=" + amountPayable + "]";
 	}
 
 }

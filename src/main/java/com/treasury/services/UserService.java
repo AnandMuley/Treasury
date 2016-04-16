@@ -27,6 +27,15 @@ public class UserService {
 	@Autowired
 	private DtoCreatorUtil dtoCreatorUtil;
 
+	@Autowired
+	private PaymentCalculator paymentCalculator;
+
+	public UserDto findById(String userId) {
+		UserBean userBean = userRepository.findOne(userId);
+		UserDto userDto = dtoCreatorUtil.createUserDto(userBean);
+		return userDto;
+	}
+
 	public void create(UserDto userDto) {
 		UserBean userBean = beanCreatorUtil.createUserBean(userDto);
 		userRepository.save(userBean);
@@ -38,6 +47,8 @@ public class UserService {
 		List<UserDto> userDtos = new ArrayList<UserDto>();
 		for (UserBean userBean : beans) {
 			UserDto userDto = dtoCreatorUtil.createUserDto(userBean);
+			userDto.setAmountPayable(paymentCalculator
+					.calculateAmountPayable(userDto.getArea()));
 			userDtos.add(userDto);
 		}
 		return userDtos;

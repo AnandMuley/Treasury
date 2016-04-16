@@ -31,7 +31,7 @@
 					<input value="${userDto.contactNo}" required="required" id="contactNo" name="contactNo" type="text" placeholder="Contact No"/>
 				</div>
 				<div class="row">
-					<input value="${userDto.area}" required="required" name="area" type="text" placeholder="Area in Sq.Ft"/>
+					<input id="area" value="${userDto.area}" required="required" name="area" type="text" placeholder="Area in Sq.Ft"/>
 				</div>
 				<div class="row">
 					<button id="addBtn" type="button">ADD</button>
@@ -55,7 +55,7 @@
 					<div class="contact-no"><span>Mob:</span> ${user.contactNo}</div>
 					<div class="flat-no"><span>Flat No:</span> ${user.flatNo}</div>
 					<div class="actions-panel">
-						<div class="edit" title="${user.name}|${user.flatNo}|${user.contactNo}|${user.id}">
+						<div class="edit" title="${user.name}|${user.flatNo}|${user.contactNo}|${user.id}|${user.area}">
 							<img width="20" alt="" src="${pageContext.request.contextPath}/resources/images/document_edit.png">
 						</div>
 						<div class="delete" title="${user.id}">

@@ -11,10 +11,6 @@
 	<div class="value">${dashboardDto.startDt}</div>
 </div>
 
-<div class="amount-panel">
-	<div class="label">Expected</div>
-	<div class="value">&#x20B9; ${dashboardDto.expectedAmount}</div>
-</div>
 <c:if test="${fn:length(dashboardDto.userDtos)>0}">
 	<div class="finance-table-title">Finances Dues</div>
 	<table class="finance-table">

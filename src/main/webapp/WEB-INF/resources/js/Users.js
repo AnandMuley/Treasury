@@ -9,6 +9,7 @@ $(document).ready(function(){
 		$('#flatNo').val(userDat[1]);
 		$('#contactNo').val(userDat[2]);
 		$('#userID').val(userDat[3]);
+		$('#area').val(userDat[4]);
 		$('#addBtn').hide();
 		$('#saveBtn').show();
 	});

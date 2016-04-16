@@ -1,5 +1,6 @@
 package com.treasury.controllers;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,12 @@ public class HeaderController {
 
 	@RequestMapping(value = "dashboard")
 	public String renderDashboard(Model model) {
-		DashboardDto dashboardDto = dashboardService.getDashboardDetails();
-		model.addAttribute("dashboardDto", dashboardDto);
+		try {
+			DashboardDto dashboardDto = dashboardService.getDashboardDetails();
+			model.addAttribute("dashboardDto", dashboardDto);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		return "Dashboard";
 	}
 

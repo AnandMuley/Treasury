@@ -5,6 +5,9 @@
 <title>Payments</title>
 <%@include file="Header.jsp" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/Payment.js"></script>
+<script type="text/javascript">
+	var contextPath = '${pageContext.request.contextPath}';
+</script>
 </head>
 <body>
 <div class="payments-error-msg-container">
@@ -16,8 +19,9 @@
 		</div>
 	</c:if>
 </div>
-<div class="user-paydetails-container">
-	
+<div id="amountPayable" class="amount-payable-container">
+	<div class="label">Payable</div>
+	<div id="amount" class="amount"></div>
 </div>
 <div align="center" class="payments-container">
 <div align="center" class="payments-table">

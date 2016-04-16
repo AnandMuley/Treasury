@@ -12,6 +12,7 @@ import com.treasury.beans.ChequeBean;
 import com.treasury.beans.NetBankingBean;
 import com.treasury.beans.PaymentBean;
 import com.treasury.dtos.PaymentDto;
+import com.treasury.dtos.UserDto;
 import com.treasury.exceptions.InvalidPaymentModeException;
 import com.treasury.repositories.PaymentRepository;
 
@@ -22,6 +23,28 @@ public class PaymentService {
 	private PaymentRepository paymentRepository;
 
 	private String DDMMYYYY = "dd-MM-yyyy";
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private PaymentCalculator paymentCalculator;
+
+	@Autowired
+	private MonthCalculator monthCalculator;
+
+	@Autowired
+	private DashboardService dashboardService;
+
+	public Double calculateAmountPayable(String userId) throws ParseException {
+		UserDto userDto = userService.findById(userId);
+		Double amountPayable = paymentCalculator.calculateAmountPayable(userDto
+				.getArea());
+		int noOfMonths = monthCalculator.getNoOfMonths();
+		Double totalAmount = amountPayable * noOfMonths;
+		Double amountPaid = dashboardService.getAmountPaid(userId);
+		return totalAmount - amountPaid;
+	}
 
 	public void create(PaymentDto paymentDto)
 			throws InvalidPaymentModeException, ParseException {
