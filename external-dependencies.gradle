@@ -64,6 +64,7 @@ ext{
 	]
 	
 	jodatime = 'joda-time:joda-time:2.8.1'
+	cors = 'com.thetransactioncompany:cors-filter:1.3.2'
 	
 	// Test Dependencies
 	testng = "org.testng:testng:6.9.4"

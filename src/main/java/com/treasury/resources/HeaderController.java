@@ -1,4 +1,4 @@
-package com.treasury.controllers;
+package com.treasury.resources;
 
 import java.text.ParseException;
 import java.util.List;
@@ -30,13 +30,6 @@ public class HeaderController {
 	@RequestMapping(value = "administration")
 	public String renderAdminPage() {
 		return "Administration";
-	}
-
-	@RequestMapping(value = "users")
-	public String renderUsers(Model model) {
-		List<UserDto> userDtos = userService.getAll();
-		model.addAttribute("users", userDtos);
-		return "Users";
 	}
 
 	@RequestMapping(value = "payments")

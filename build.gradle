@@ -25,9 +25,10 @@ repositories {
 }
 
 dependencies {
-    compile fasterXml.jsonprovider,spring.mongo,spring.jpa,spring.core,spring.web,spring.webmvc
-	compile jodatime,spring.security,commons.fileupload,validation.hibernate
-	compile javax.jstl,javax.el,commons.io,fasterXml.databind
+	compile spring.web,spring.core,spring.jpa,spring.mongo,commons.io,spring.webmvc
+	compile jersey.server,jersey.spring,cors
+    compile fasterXml.jsonprovider,fasterXml.databind
+	compile jodatime,commons.fileupload
 	providedCompile servletApi
-    testCompile testng,jmock.core,jmock.legacy,spring.test
+    testCompile testng,jmock.core,jmock.legacy,spring.test,hamcrest.core,hamcrest.library
 }

@@ -1,19 +1,21 @@
-package com.treasury.controllers;
+package com.treasury.resources;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.treasury.dtos.PaymentDto;
 import com.treasury.dtos.UserDto;
@@ -23,8 +25,10 @@ import com.treasury.services.PaymentService;
 import com.treasury.services.UserService;
 import com.treasury.services.ValidationService;
 
-@Controller
-@RequestMapping("payments")
+@Component
+@Path("payments/{uid}")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class PaymentsController {
 
 	@Autowired
@@ -39,21 +43,26 @@ public class PaymentsController {
 	@Autowired
 	private PaymentCalculator paymentCalculator;
 
-	@RequestMapping(value = "amountpayable", method = RequestMethod.GET)
-	public void getAmountPayable(@RequestParam("uid") String userId,
-			HttpServletResponse httpServletResponse) throws IOException {
-		Double amountPayable;
+	@GET
+	@Path("amountpayable")
+	public Response getAmountPayable(@PathParam("uid") String userId) {
+		Response response = null;
 		try {
-			amountPayable = paymentService.calculateAmountPayable(userId);
-			PrintWriter writer = httpServletResponse.getWriter();
-			writer.print("Payable:" + amountPayable);
+			Double amountPayable = paymentService
+					.calculateAmountPayable(userId);
+			PaymentDto paymentDto = new PaymentDto();
+			paymentDto.setAmountPayable(amountPayable);
+			response = Response.ok(paymentDto).build();
 		} catch (ParseException e) {
 			e.printStackTrace();
+			response = Response.serverError().build();
 		}
+		return response;
 	}
 
-	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public String addPayment(PaymentDto paymentDto, Model model) {
+	@POST
+	public Response addPayment(PaymentDto paymentDto, Model model) {
+		Response response = null;
 		try {
 			validationService.validate(paymentDto);
 			if (CollectionUtils.isEmpty(paymentDto.getValidationErrors())) {
@@ -64,11 +73,13 @@ public class PaymentsController {
 			List<UserDto> userDtos = userService.getAll();
 			model.addAttribute("users", userDtos);
 		} catch (InvalidPaymentModeException e) {
-			model.addAttribute("message", e.getMessage());
+			response = Response.status(Response.Status.BAD_REQUEST)
+					.entity(e.getMessage()).build();
 		} catch (ParseException e) {
-			model.addAttribute("message", "Invalid Date Format");
+			response = Response.status(Response.Status.BAD_REQUEST)
+					.entity("Invalid Date Format").build();
 		}
-		return "Payments";
+		return response;
 	}
 
 }

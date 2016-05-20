@@ -12,6 +12,7 @@ public class PaymentDto extends CommonDto {
 	private DateDto fromDateDto;
 	private DateDto toDateDto;
 	private String name;
+	private Double amountPayable;
 
 	public String getId() {
 		return id;
@@ -93,13 +94,22 @@ public class PaymentDto extends CommonDto {
 		this.name = name;
 	}
 
+	public Double getAmountPayable() {
+		return amountPayable;
+	}
+
+	public void setAmountPayable(Double amountPayable) {
+		this.amountPayable = amountPayable;
+	}
+
 	@Override
 	public String toString() {
 		return "PaymentDto [id=" + id + ", userId=" + userId + ", mode=" + mode
 				+ ", amount=" + amount + ", paymentDt=" + paymentDt
 				+ ", chequeDto=" + chequeDto + ", netBankingDto="
 				+ netBankingDto + ", fromDateDto=" + fromDateDto
-				+ ", toDateDto=" + toDateDto + ", name=" + name + "]";
+				+ ", toDateDto=" + toDateDto + ", name=" + name
+				+ ", amountPayable=" + amountPayable + "]";
 	}
 
 }

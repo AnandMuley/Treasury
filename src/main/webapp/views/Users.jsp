@@ -66,6 +66,18 @@
 			</c:forEach>
 		</div>
 	</c:if>
+<%-- 	<table border="1">
+			<c:forEach items="${moycoms}" var="moycom" varStatus="stat">
+					<c:if test="${stat.index%4==0 && stat.index!=0}">
+						<tr>
+					</c:if>
+						<td>${moycom['information']}</td>
+					<c:if test="${stat.index%4==0 && stat.index!=0}">
+						</tr>
+					</c:if>
+			 </c:forEach>
+    </table>  --%>
+	
 	<%-- <div class="edit-user-container">
 		<form action="${pageContext.request.contextPath}/users/create"
 			method="post">

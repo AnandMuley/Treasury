@@ -117,7 +117,7 @@ body {
 	width: 100%;
 	height: 40px;
 	background-color: #106CC8;
-	font-size: 25px;
+	font-size: 17px;
 	padding-top: 10px;
 	font-family: Arial;
 	text-align: center;
@@ -127,16 +127,18 @@ body {
 .header-tab {
 	width: 25%;
 	float: left;
+	padding-top: 6px;
+	color: #A6D3FF;
 }
 
 .header-tab a {
 	text-decoration: none;
-	color: white;
+	color: inherit;
 }
 
 .header-tab:HOVER {
-	border-bottom: solid 2px white;
 	cursor: pointer;
+	color: white;
 }
 
 .users-container {
