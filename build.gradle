@@ -26,7 +26,7 @@ repositories {
 
 dependencies {
 	compile spring.web,spring.core,spring.jpa,spring.mongo,commons.io,spring.webmvc
-	compile jersey.server,jersey.spring,cors
+	compile jersey.server,jersey.spring,cors,jersey.linking
     compile fasterXml.jsonprovider,fasterXml.databind
 	compile jodatime,commons.fileupload
 	providedCompile servletApi

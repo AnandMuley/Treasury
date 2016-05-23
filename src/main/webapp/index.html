@@ -3,7 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <title>Treasury</title>
+<!-- AngularJS -->
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Treasury App -->
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers/UsersController.js"></script>
+<script type="text/javascript" src="js/controllers/PaymentsController.js"></script>
+<script type="text/javascript" src="js/controllers/DateController.js"></script>
+<script type="text/javascript" src="js/controllers/PaymentModesController.js"></script>
+<script type="text/javascript" src="js/controllers/NavigationController.js"></script>
+
+<script type="text/javascript" src="js/resources/UsersResource.js"></script>
+
 </head>
 <body>
+	<br/>
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a href="#" class="navbar-brand">Treasury</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul ng-controller="NavigationController" class="nav navbar-nav">
+						<li ng-class="{'active':currentTab=='users'}" ng-click="changeTab('users')">
+							<a href="#/users">Users</a>
+						</li>
+						<li ng-class="{'active':currentTab=='payments'}" ng-click="changeTab('payments')">
+							<a href="#/payments">Payments</a>
+						</li>
+						<li ng-class="{'active':currentTab=='reports'}" ng-click="changeTab('reports')">
+							<a href="#">Reports</a>
+						</li>
+						<li ng-class="{'active':currentTab=='dues'}" ng-click="changeTab('dues')">
+							<a href="#">Dues</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div ng-view></div>
+	</div>
 </body>
 </html>

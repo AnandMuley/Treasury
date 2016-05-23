@@ -1,7 +1,6 @@
 package com.treasury.dtos;
 
-
-public class UserDto extends CommonDto {
+public class UserDto {
 
 	private String id;
 	private String name;

@@ -1,5 +1,46 @@
 @CHARSET "UTF-8";
 
+#users-panel .row,#payment-panel .row{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.panel-body{
+	padding: 10px 45px 10px 45px;
+}
+
+.deluser{
+	float: right;
+	cursor: pointer;
+	color: red;
+}
+
+.deluser:HOVER{
+	text-decoration: underline;
+}
+
+.save-btn{
+	font-size: 40px;
+	margin-left: 100px;
+	margin-top: 100px;
+	cursor: pointer;
+	padding: 20px;
+	background-color: #F9F9F9;
+	border: solid 1px #E1E1E1;
+	border-radius:3px;
+}
+
+.save-btn:HOVER{
+	background-color: #267ED5;
+	border:solid 1px #165EA6;
+}
+
+.page-header{
+	margin: 25px 0 20px;
+	color: #267ED5;
+}
+
+<!-- OLD -->
 .amount-payable-container{
 	float: right;
 	margin-right: 9%;
