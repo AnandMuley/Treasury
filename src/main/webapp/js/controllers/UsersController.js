@@ -1,18 +1,18 @@
 controllers.controller('UsersController',['$scope','UsersResource',function($scope,User){
 	
 	$scope.user = {};
-	$scope.modes = {
+	$scope.modeTypes = {
 			add:{title:'Add User',type:'add'},
 			edit:{title:'Edit User',type:'edit'}
 	}
-	$scope.mode = $scope.modes['add'];
+	$scope.modeType = $scope.modeTypes['add'];
 	
 	var users = User.query(function(){
 		$scope.users = users;
 	});
 	
-	$scope.resetMode = function(){
-		$scope.mode = $scope.modes['add'];
+	$scope.resetmodeType = function(){
+		$scope.modeType = $scope.modeTypes['add'];
 		$scope.user = {};
 	}
 	
@@ -35,8 +35,8 @@ controllers.controller('UsersController',['$scope','UsersResource',function($sco
 		});
 	}
 	
-	$scope.switchToEditMode = function(editingUser){
-		$scope.mode = $scope.modes['edit'];
+	$scope.switchToEditmodeType = function(editingUser){
+		$scope.modeType = $scope.modeTypes['edit'];
 		$scope.user = editingUser;
 	}
 	

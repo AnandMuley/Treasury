@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html ng-app="Treasury">
+<html ng-app="Treasury" ng-cloak>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Treasury</title>
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+<!-- Angular Material -->
+<link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.min.css">
 <!-- AngularJS -->
 <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-messages/angular-messages.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
+
 <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
 <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
-
-<!-- Bootstrap -->
-<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
-<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Treasury App -->
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -26,33 +29,15 @@
 <script type="text/javascript" src="js/resources/UsersResource.js"></script>
 
 </head>
-<body>
-	<br/>
-	<div class="container">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a href="#" class="navbar-brand">Treasury</a>
-				</div>
-				<div class="collapse navbar-collapse">
-					<ul ng-controller="NavigationController" class="nav navbar-nav">
-						<li ng-class="{'active':currentTab=='users'}" ng-click="changeTab('users')">
-							<a href="#/users">Users</a>
-						</li>
-						<li ng-class="{'active':currentTab=='payments'}" ng-click="changeTab('payments')">
-							<a href="#/payments">Payments</a>
-						</li>
-						<li ng-class="{'active':currentTab=='reports'}" ng-click="changeTab('reports')">
-							<a href="#">Reports</a>
-						</li>
-						<li ng-class="{'active':currentTab=='dues'}" ng-click="changeTab('dues')">
-							<a href="#">Dues</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<div ng-view></div>
+<body class="md-padding">
+	<div class="header" ng-controller="NavigationController">
+		<div class="site-title">Treasury</div>
+		<md-content class="md-padding navbar">
+			<md-tabs md-dynamic-height md-border-bottom md-selected="selectedTab">
+				<md-tab ng-click="loadView(tab)" ng-repeat="tab in tabs" label="{{tab.name}}"></md-tab>
+			</md-tabs>
+		</md-content>
 	</div>
+	<div class="md-padding" ng-view></div>
 </body>
 </html>

@@ -1,11 +1,57 @@
-<div class="page-header">
-	<h2>Users</h2>
+<div layout="row">
+	<div flex="30">
+		<md-card class="md-padding">
+			<md-card-title>
+				<md-card-title-text layout="row" layout-align="center">
+					<h3 class="card-title">{{modeType.title}}</h3>
+				</md-card-title-text>
+			</md-card-title>
+			<md-card-content>
+				<md-input-container class="custom-input-container">
+					<label>Name</label>
+					<input ng-model="user.name"/>
+				</md-input-container>
+				<md-input-container class="custom-input-container">
+					<label>Flat No</label>
+					<input ng-model="user.flatNo"/>
+				</md-input-container>
+				<md-input-container class="custom-input-container">
+					<label>Contact No</label>
+					<input ng-model="user.contactNo"/>
+				</md-input-container>
+				<md-input-container class="custom-input-container">
+					<label>Area</label>
+					<input ng-model="user.area"/>
+				</md-input-container>
+			</md-card-content>
+			<md-card-actions layout="row" layout-align="center">
+				<md-button ng-if="modeType.type=='add'" ng-click="add()" class="md-raised md-primary">ADD</md-button>
+				<md-button ng-if="modeType.type=='edit'" ng-click="update()" class="md-raised btn-pink">Update</md-button>
+				<md-button ng-if="modeType.type=='edit'" ng-click="resetmodeType()" class="md-raised">Cancel</md-button>				
+			</md-card-actions>
+		</md-card>
+	</div>
+	<div flex="20">
+		<md-list flex class="users-list">
+			<md-subheader class="md-no-sticky">Existing Users</md-subheader>
+			<md-list-item class="md-3-line" ng-repeat="user in users" ng-click="switchToEditmodeType(user)">
+				<img ng-src="https://material.angularjs.org/latest/img/list/60.jpeg?0" class="md-avatar" alt="No Image"/>
+				<div class="md-list-item-text" layout="column">
+					<h3>{{user.name}}</h3>
+					<h4>{{user.flatNo}}</h4>
+					<p>{{user.contactNo}}</p>
+					<md-icon md-svg-icon="alarm"></md-icon>
+				</div>
+			</md-list-item>
+		</md-list>
+	</div>
 </div>
-<div class="row">
+
+<!-- <div class="row">
 	<div id="users-panel" class="col-xs-4">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h4>{{mode.title}}</h4>
+				<h4>{{modeType.title}}</h4>
 			</div>
 			<div class="panel-body">
 				<div class="row">
@@ -21,14 +67,14 @@
 					<input class="form-control" ng-model="user.area" placeholder="Area"/>
 				</div>
 				<div class="row">
-						<div ng-if="mode.type=='add'" class="col-xs-12" align="center">
+						<div ng-if="modeType.type=='add'" class="col-xs-12" align="center">
 							<button ng-click="add()" type="button" class="btn btn-primary btn-block">Add</button>
 						</div>
-						<div ng-if="mode.type=='edit'" class="col-xs-6" align="center">
+						<div ng-if="modeType.type=='edit'" class="col-xs-6" align="center">
 							<button ng-click="update()" class="btn btn-success btn-block">Update</button>
 						</div>
-						<div ng-if="mode.type=='edit'" class="col-xs-6" align="center">
-							<button ng-click="resetMode()" type="button" class="btn btn-primary btn-block">Cancel</button>
+						<div ng-if="modeType.type=='edit'" class="col-xs-6" align="center">
+							<button ng-click="resetmodeType()" type="button" class="btn btn-primary btn-block">Cancel</button>
 						</div>
 				</div>
 			</div>
@@ -39,7 +85,7 @@
 			<a href="#/" class="list-group-item active">
 				<h3 class="list-group-item-heading">Existing Users</h3>
 			</a>
-			<a href="#/" ng-repeat="user in users" class="list-group-item" ng-click="switchToEditMode(user)">
+			<a href="#/" ng-repeat="user in users" class="list-group-item" ng-click="switchToEditmodeType(user)">
 				<div ng-click="delete(user,$event)" class="deluser glyphicon glyphicon-trash"></div>
 				<h4 class="list-group-item-heading">{{user.name}}</h4>
 				<p class="list-group-item-text">Flat No : {{user.flatNo}}</p>
@@ -47,4 +93,4 @@
 			</a>
 		</div>
 	</div>
-</div>
+</div> -->
