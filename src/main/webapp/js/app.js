@@ -12,6 +12,9 @@ app.config(['$routeProvider','$mdIconProvider','$mdThemingProvider',
 		controller : 'PaymentsController'
 	}).when('/users',{
 		redirectTo : '/'
+	}).when('/reports',{
+		templateUrl:'views/Reports.html',
+		controller : 'ReportsController'
 	});
 	
 //	$mdIconProvider.iconSet('social','img/icons/sets/social-icons.svg',24).defaultIconSet('img/icons/sets/core-icons.svg');

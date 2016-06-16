@@ -8,7 +8,7 @@ controllers.controller('NavigationController',['$scope','$location',function($sc
 		path : 'payments'
 	},{
 		name : 'reports',
-		path : 'report'
+		path : 'reports'
 	},{
 		name : 'dues',
 		path : 'dues'
