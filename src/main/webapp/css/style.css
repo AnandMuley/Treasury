@@ -1,8 +1,11 @@
 @CHARSET "UTF-8";
 
 :root{
-	--color-red:#DE3641;
-	--color-deeppurple:rgba(63, 81, 181, 1);
+	--color-teal:#009688;
+}
+
+.message-success{
+	color: var(--color-teal);
 }
 
 body {
@@ -11,8 +14,9 @@ body {
 
 .site-title {
 	font-size: 30px;
-	color: var(--color-red);
+	color: var(--color-teal);
 	font-weight: bolder;
+	padding-left: 10px;
 }
 
 .custom-input-container{
@@ -20,13 +24,8 @@ body {
 	margin: 0px !important;
 }
 
-.btn-pink{
-	background-color: var(--color-red) !important;
-	color: white !important;
-}
-
 .card-title{
-	color:var(--color-deeppurple);
+	color:var(--color-teal);
 }
 
 .users-list{

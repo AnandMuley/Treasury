@@ -1,5 +1,8 @@
+<div ng-if="message!=null" layout="row" layout-align="center">
+	<span class="message-success">{{message}}</span>
+</div>
 <div class="payments-container" layout="row" layout-align="center">
-	<div flex="50" style="border:solid 1px;">
+	<div flex="50">
 		<div layout="row" layout-align="center">
 			<md-input-container>
 				<md-select ng-model="payment.userId" ng-controller="UsersController">
@@ -10,17 +13,29 @@
 		<div ng-if="payment.userId!='select'"  layout="row" layout-align="center">
 			<md-card flex="100" class="md-padding">
 				<md-card-content>
+					<div layout="row" layout-align="center">
+						<md-input-container>
+							<label>Payment Dt (dd-MM-yyyy)</label>
+							<input ng-model="payment.paymentDt"/>
+						</md-input-container>
+					</div>
 					<div layout="row" ng-controller="DateController" >
-						<md-input-container flex="50">
-								<md-select ng-model="payment.fromMonth">
+						<md-input-container flex="20">
+							<md-select ng-model="payment.fromDateDto.year">
+								<md-option value="year">Year</md-option>
+								<md-option value="{{year}}" ng-repeat="year in years">{{year}}</md-option>
+							</md-select>
+						</md-input-container>
+						<md-input-container flex="40">
+								<md-select ng-model="payment.fromDateDto.month">
 									<md-option value="fromMonth" selected="selected">From Month</md-option>
-									<md-option value="{{month}}" ng-repeat="month in months">{{month}}</md-option>
+									<md-option value="{{$index+1}}" ng-repeat="month in months">{{month}}</md-option>
 								</md-select>
 						</md-input-container>
-						<md-input-container flex="50">
-								<md-select ng-model="payment.toMonth">
+						<md-input-container flex="40">
+								<md-select ng-model="payment.toDateDto.month">
 									<md-option value="toMonth" selected="selected">To Month</md-option>
-									<md-option value="{{month}}" ng-repeat="month in months">{{month}}</md-option>
+									<md-option value="{{$index+1}}" ng-repeat="month in months">{{month}}</md-option>
 								</md-select>
 						</md-input-container>
 					</div>
@@ -32,46 +47,46 @@
 							</md-select>
 						</md-input-container>
 						<md-input-container flex="50">
-							<label>Amount Paid</label>
-							<input ng-model="payment.amountPaid" />
+							<label>Amount</label>
+							<input ng-model="payment.amount" />
 						</md-input-container>
 					</div>
 					<!-- Payment Mode Switch -->
 					<div layout="row" ng-switch="payment.mode">
 						<!-- CHEQUE -->
 						<div flex="100" ng-switch-when="cheque">
-							<md-input-container flex="33">
+							<md-input-container flex="30">
 								<label>Bank Details</label>
-								<input ng-model="payment.bankdetails" />
+								<input ng-model="payment.chequeDto.bankDetails" />
 							</md-input-container>
-							<md-input-container flex="33">
+							<md-input-container flex="30">
 								<label>Cheque No</label>
-								<input ng-model="payment.chequeNo"/>
+								<input ng-model="payment.chequeDto.chequeNo"/>
 							</md-input-container>
 							<md-input-container flex="30">
 								<label>Date On Cheque</label>
-								<input ng-model="payment.chequeDt"/>
+								<input ng-model="payment.chequeDto.chequeDt"/>
 							</md-input-container>
 						</div>
 						<!-- NETBANKING -->
 						<div flex="100" ng-switch-when="netbanking">
-							<md-input-container flex="33">
+							<md-input-container flex="30">
 								<label>Bank Details</label>
-								<input ng-model="payment.bankdetails" />
+								<input ng-model="payment.netBankingDto.bankDetails" />
 							</md-input-container>
-							<md-input-container flex="33">
+							<md-input-container flex="30">
 								<label>Reference No</label>
-								<input ng-model="payment.referenceNo"/>
+								<input ng-model="payment.netBankingDto.referenceNo"/>
 							</md-input-container>
 							<md-input-container flex="30">
 								<label>Account No</label>
-								<input ng-model="payment.accountNo"/>
+								<input ng-model="payment.netBankingDto.accountNo"/>
 							</md-input-container>
 						</div>
 					</div>
 				</md-card-content>
 				<md-card-actions layout="row" layout-align="center">
-					<md-button class="md-raised md-primary">SAVE</md-button>
+					<md-button ng-click="savePayment()" class="md-raised md-primary">SAVE</md-button>
 				</md-card-actions>
 			</md-card>
 		</div>

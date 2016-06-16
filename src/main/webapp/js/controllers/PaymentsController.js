@@ -1,11 +1,17 @@
-controllers.controller('PaymentsController',['$scope',function($scope){
+controllers.controller('PaymentsController',['$scope','PaymentResource',function($scope,Payment){
 	
-	$scope.payment = {
-			mode:'cash',
-			userId:'select',
-			fromMonth:'from',
-			toMonth:'to',
-			mode:'default'
-	};
+	$scope.payment = new Payment({
+		mode:'cash',
+		userId:'select',
+		fromDateDto:null,
+		toDateDto:null,
+		mode:'paymentMode'});
+	
+	$scope.savePayment = function(){
+		$scope.payment.toDateDto.year = $scope.payment.fromDateDto.year;
+		$scope.payment.$save(function(){
+			$scope.message = "Details saved successfully !";
+		});
+	}
 	
 }]);

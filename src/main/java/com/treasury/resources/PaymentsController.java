@@ -1,7 +1,6 @@
 package com.treasury.resources;
 
 import java.text.ParseException;
-import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -14,11 +13,9 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 
 import com.treasury.dtos.PaymentDto;
-import com.treasury.dtos.UserDto;
 import com.treasury.exceptions.InvalidPaymentModeException;
 import com.treasury.services.PaymentCalculator;
 import com.treasury.services.PaymentService;
@@ -26,7 +23,7 @@ import com.treasury.services.UserService;
 import com.treasury.services.ValidationService;
 
 @Component
-@Path("payments/{uid}")
+@Path("payments")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class PaymentsController {
@@ -44,7 +41,7 @@ public class PaymentsController {
 	private PaymentCalculator paymentCalculator;
 
 	@GET
-	@Path("amountpayable")
+	@Path("{uid}/amountpayable")
 	public Response getAmountPayable(@PathParam("uid") String userId) {
 		Response response = null;
 		try {
@@ -61,17 +58,15 @@ public class PaymentsController {
 	}
 
 	@POST
-	public Response addPayment(PaymentDto paymentDto, Model model) {
-		Response response = null;
+	public Response addPayment(PaymentDto paymentDto) {
+		Response response = Response.ok().build();
 		try {
 			validationService.validate(paymentDto);
-			if (CollectionUtils.isEmpty(paymentDto.getValidationErrors())) {
+			if (!CollectionUtils.isEmpty(paymentDto.getValidationErrors())) {
+				response = Response.status(Response.Status.BAD_REQUEST).build();
+			} else {
 				paymentService.create(paymentDto);
-				model.addAttribute("message", "Details saved successfully !");
-				model.addAttribute("paymentDto", new PaymentDto());
 			}
-			List<UserDto> userDtos = userService.getAll();
-			model.addAttribute("users", userDtos);
 		} catch (InvalidPaymentModeException e) {
 			response = Response.status(Response.Status.BAD_REQUEST)
 					.entity(e.getMessage()).build();
