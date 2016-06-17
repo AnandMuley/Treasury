@@ -1,8 +1,19 @@
-<div layout="row">
-	<h3>Reports</h3>
-</div>
 <div layout="row" layout-align="center">
-	<div flex="60">
-		
-	</div>
+	<md-whiteframe id="reports-panel" class="md-whiteframe-4dp" flex="60">
+			<div layout="row" class="header">
+				<div class="md-padding row" flex="20">Sr.No</div>
+				<div class="md-padding row" flex="20">Name</div>
+				<div class="md-padding row" flex="20">Amount</div>
+				<div class="md-padding row" flex="20">Payment Dt</div>
+				<div class="md-padding row" flex="20">Mode</div>
+			</div>
+			<div class="content" layout="row" ng-repeat="report in reports.paymentDtos">
+				<div class="md-padding row" flex="20">{{$index+1}}</div>
+				<div class="md-padding row" flex="20">{{report.name}}</div>
+				<div class="md-padding row" flex="20">{{report.amount}}</div>
+				<div class="md-padding row" flex="20">{{report.paymentDt}}</div>
+				<div class="md-padding row" flex="20">{{report.mode|uppercase}}</div>
+			</div>
+	</md-whiteframe>
+
 </div>

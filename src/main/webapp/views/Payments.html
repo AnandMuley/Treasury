@@ -4,14 +4,15 @@
 <div class="payments-container" layout="row" layout-align="center">
 	<div flex="50">
 		<div layout="row" layout-align="center">
-			<md-input-container>
-				<md-select ng-model="payment.userId" ng-controller="UsersController">
+			<md-input-container flex="40">
+				<md-select class="user-select" ng-model="payment.userId" ng-controller="UsersController">
+					<md-option value="select" selected="selected">Select User</md-option>
 					<md-option value="{{user.id}}" ng-repeat="user in users">{{user.name}}</md-option>
 				</md-select>
 			</md-input-container>
 		</div>
 		<div ng-if="payment.userId!='select'"  layout="row" layout-align="center">
-			<md-card flex="100" class="md-padding">
+			<md-card flex="100" class="md-padding md-whiteframe-4dp">
 				<md-card-content>
 					<div layout="row" layout-align="center">
 						<md-input-container>

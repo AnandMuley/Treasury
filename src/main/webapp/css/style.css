@@ -2,10 +2,29 @@
 
 :root{
 	--color-teal:#009688;
+	--color-teal-100:#B2DFDB;
+	--color-amber-100:#FFECB3;
 }
 
 .message-success{
 	color: var(--color-teal);
+}
+
+#reports-panel .header{
+	background-color: var(--color-teal);
+}
+
+.user-select{
+	font-size:x-large;
+}
+
+#reports-panel .header .row{
+	border: solid 1px #F5F5F5;
+}
+
+#reports-panel .content .row{
+	border: solid 1px #F5F5F5;
+	border-collapse: collapse;
 }
 
 body {
@@ -28,6 +47,36 @@ body {
 	color:var(--color-teal);
 }
 
+.dues-tile-grid md-grid-list {
+	margin: 8px;
+}
+
+.dues-tile-grid .gray {
+	background: #f5f5f5;
+}
+
+.dues-tile-grid .green {
+	background: var(--color-amber-100);
+}
+
+.dues-tile-grid md-grid-tile {
+	transition: all 400ms ease-out 50ms;
+}
+
 .users-list{
 	margin-left: 20px;
+}
+
+.dues-tile-grid md-grid-tile md-grid-tile-footer {
+	background: rgba(0, 0, 0, 0.68);
+	height: 36px;
+}
+
+.users-tile-grid md-grid-tile md-grid-tile-footer {
+	background: rgba(0, 0, 0, 0.68);
+	height: 100px;
+}
+
+.users-tile-grid md-grid-tile md-grid-tile-footer h2{
+	font-size: large;
 }

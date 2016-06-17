@@ -15,6 +15,9 @@ app.config(['$routeProvider','$mdIconProvider','$mdThemingProvider',
 	}).when('/reports',{
 		templateUrl:'views/Reports.html',
 		controller : 'ReportsController'
+	}).when('/dues',{
+		templateUrl:'views/Dues.html',
+		controller : 'DuesController'
 	});
 	
 //	$mdIconProvider.iconSet('social','img/icons/sets/social-icons.svg',24).defaultIconSet('img/icons/sets/core-icons.svg');
