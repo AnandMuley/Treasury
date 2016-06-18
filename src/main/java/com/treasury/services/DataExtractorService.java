@@ -5,17 +5,18 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.treasury.beans.UserAmountBean;
+import com.treasury.beans.ResidentAmountBean;
 
 @Service
 public class DataExtractorService {
 
-	public List<String> getUserIds(List<UserAmountBean> amountBeans) {
-		List<String> userIds = new ArrayList<>();
-		for (UserAmountBean userAmountBean : amountBeans) {
-			userIds.add(userAmountBean.getUserId());
+	public List<String> getResidentIds(
+			List<ResidentAmountBean> residentAmountBeans) {
+		List<String> residentIds = new ArrayList<>();
+		for (ResidentAmountBean residentAmountBean : residentAmountBeans) {
+			residentIds.add(residentAmountBean.getResidentId());
 		}
-		return userIds;
+		return residentIds;
 	}
 
 }

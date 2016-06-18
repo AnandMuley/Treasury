@@ -5,13 +5,13 @@
 	<div flex="50">
 		<div layout="row" layout-align="center">
 			<md-input-container flex="40">
-				<md-select class="user-select" ng-model="payment.userId" ng-controller="UsersController">
-					<md-option value="select" selected="selected">Select User</md-option>
-					<md-option value="{{user.id}}" ng-repeat="user in users">{{user.name}}</md-option>
+				<md-select class="user-select" ng-model="payment.residentId" ng-controller="ResidentsController">
+					<md-option value="select" selected="selected">Select Resident</md-option>
+					<md-option value="{{resident.id}}" ng-repeat="resident in residents">{{resident.name}}</md-option>
 				</md-select>
 			</md-input-container>
 		</div>
-		<div ng-if="payment.userId!='select'"  layout="row" layout-align="center">
+		<div ng-if="payment.residentId!='select'"  layout="row" layout-align="center">
 			<md-card flex="100" class="md-padding md-whiteframe-4dp">
 				<md-card-content>
 					<div layout="row" layout-align="center">
@@ -93,68 +93,3 @@
 		</div>
 	</div>
 </div>
-<!-- 
-<div class="row">
-	<div class="col-xs-4"></div>
-	<div class="col-xs-4">
-		<div id="payment-panel">
-			<div id="payment-form-panel" ng-if="payment.userId!='select'" class="row">
-				<div class="col-sm-12">
-					<div ng-switch="payment.mode" id="payment-modes-panel" class="row">
-						<div class="col-xs-12">
-							<div class="row">
-								<div class="col-xs-12">
-									<input ng-model="payment.amountPaid" class="form-control" placeholder="Amount Paid"/>
-								</div>
-							</div>
-						<!-- CHEQUE -->
-						<!--<div class="row" ng-switch-when="cheque">
-							<div class="col-xs-12">
-								<div class="row">
-									<div class="col-xs-12">
-										<textarea ng-model="payment.bankdetails" placeholder="Bank Details" class="form-control" rows="3" cols=""></textarea>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-6">
-										<input class="form-control" ng-model="payment.chequeNo" placeholder="Cheque No"/>
-									</div>
-									<div class="col-xs-6">
-										<input class="form-control" ng-model="payment.chequeDt" placeholder="Date On Cheque"/>
-									</div>
-								</div>
-							</div>
-						</div>-->
-						<!-- NET BANKING -->
-						<!--
-						<div class="row" ng-switch-when="netbanking">
-							<div class="col-xs-12">
-								<div class="row">
-									<div class="col-xs-12">
-										<textarea class="form-control" ng-model="payment.bankDetails" rows="3" cols="" placeholder="Bank Details"></textarea>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-xs-6">
-										<input class="form-control" ng-model="payment.referenceNo" placeholder="Reference No"/>
-									</div>
-									<div class="col-xs-6">
-										<input class="form-control" ng-model="payment.accountNo" placeholder="Account No"/>
-									</div>
-								</div>
-							</div>
-						</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-4" ng-if="payment.userId!='select'">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="glyphicon glyphicon-floppy-disk save-btn"></div>
-			</div>
-		</div>
-	</div>
-</div>-->

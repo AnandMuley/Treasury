@@ -7,7 +7,7 @@ public class DashboardDto {
 
 	private String startDt;
 	private Double expectedAmount;
-	private List<UserDto> userDtos = new ArrayList<UserDto>();
+	private List<ResidentDto> residentDtos = new ArrayList<ResidentDto>();
 
 	public String getStartDt() {
 		return startDt;
@@ -25,14 +25,14 @@ public class DashboardDto {
 		this.expectedAmount = expectedAmount;
 	}
 
-	public List<UserDto> getUserDtos() {
-		return userDtos;
+	public List<ResidentDto> getResidentDtos() {
+		return residentDtos;
 	}
 
 	@Override
 	public String toString() {
 		return "DashboardDto [startDt=" + startDt + ", expectedAmount="
-				+ expectedAmount + ", userDtos=" + userDtos + "]";
+				+ expectedAmount + ", residentDtos=" + residentDtos + "]";
 	}
 
 }

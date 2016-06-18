@@ -19,7 +19,7 @@ import com.treasury.dtos.PaymentDto;
 import com.treasury.exceptions.InvalidPaymentModeException;
 import com.treasury.services.PaymentCalculator;
 import com.treasury.services.PaymentService;
-import com.treasury.services.UserService;
+import com.treasury.services.ResidentService;
 import com.treasury.services.ValidationService;
 
 @Component
@@ -32,7 +32,7 @@ public class PaymentsController {
 	private PaymentService paymentService;
 
 	@Autowired
-	private UserService userService;
+	private ResidentService residentService;
 
 	@Autowired
 	private ValidationService validationService;
@@ -41,12 +41,12 @@ public class PaymentsController {
 	private PaymentCalculator paymentCalculator;
 
 	@GET
-	@Path("{uid}/amountpayable")
-	public Response getAmountPayable(@PathParam("uid") String userId) {
+	@Path("{rid}/amountpayable")
+	public Response getAmountPayable(@PathParam("rid") String residentId) {
 		Response response = null;
 		try {
 			Double amountPayable = paymentService
-					.calculateAmountPayable(userId);
+					.calculateAmountPayable(residentId);
 			PaymentDto paymentDto = new PaymentDto();
 			paymentDto.setAmountPayable(amountPayable);
 			response = Response.ok(paymentDto).build();

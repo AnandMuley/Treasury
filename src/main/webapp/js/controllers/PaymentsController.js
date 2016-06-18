@@ -1,8 +1,12 @@
-controllers.controller('PaymentsController',['$scope','PaymentResource',function($scope,Payment){
+controllers.controller('PaymentsController',
+		['$scope','PaymentResource','LoginService',
+		 function($scope,Payment,loginService){
 	
+	loginService.isUserLoggedIn();
+			
 	$scope.payment = new Payment({
 		mode:'cash',
-		userId:'select',
+		residentId:'select',
 		fromDateDto:null,
 		toDateDto:null,
 		mode:'paymentMode'});

@@ -5,19 +5,23 @@ var controllers = angular.module('TreasuryControllers',[]);
 app.config(['$routeProvider','$mdIconProvider','$mdThemingProvider',
             function($routeProvider,$mdIconProvider,$mdThemingProvider){
 	$routeProvider.when('/',{
-		templateUrl : 'views/Users.html',
-		controller : 'UsersController'
+		templateUrl : 'views/Login.html',
+		controller : 'LoginController'
 	}).when('/payments',{
 		templateUrl : 'views/Payments.html',
 		controller : 'PaymentsController'
-	}).when('/users',{
-		redirectTo : '/'
+	}).when('/residents',{
+		templateUrl : 'views/Residents.html',
+		controller : 'ResidentsController'
 	}).when('/reports',{
 		templateUrl:'views/Reports.html',
 		controller : 'ReportsController'
 	}).when('/dues',{
 		templateUrl:'views/Dues.html',
 		controller : 'DuesController'
+	}).when('/registration',{
+		templateUrl : 'views/Registration.html',
+		controller : 'LoginController'
 	});
 	
 //	$mdIconProvider.iconSet('social','img/icons/sets/social-icons.svg',24).defaultIconSet('img/icons/sets/core-icons.svg');

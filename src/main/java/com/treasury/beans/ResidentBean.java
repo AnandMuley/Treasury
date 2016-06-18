@@ -1,17 +1,17 @@
-package com.treasury.dtos;
+package com.treasury.beans;
 
-public class UserDto {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "residents")
+public class ResidentBean {
+
+	@Id
 	private String id;
 	private String name;
 	private Long contactNo;
 	private String flatNo;
-	private Double amountDue;
-	/*
-	 * In Square Feet
-	 */
 	private Double area;
-	private Double amountPayable;
 
 	public String getId() {
 		return id;
@@ -45,14 +45,6 @@ public class UserDto {
 		this.flatNo = flatNo;
 	}
 
-	public Double getAmountDue() {
-		return amountDue;
-	}
-
-	public void setAmountDue(Double amountDue) {
-		this.amountDue = amountDue;
-	}
-
 	public Double getArea() {
 		return area;
 	}
@@ -61,19 +53,10 @@ public class UserDto {
 		this.area = area;
 	}
 
-	public Double getAmountPayable() {
-		return amountPayable;
-	}
-
-	public void setAmountPayable(Double amountPayable) {
-		this.amountPayable = amountPayable;
-	}
-
 	@Override
 	public String toString() {
-		return "UserDto [id=" + id + ", name=" + name + ", contactNo="
-				+ contactNo + ", flatNo=" + flatNo + ", amountDue=" + amountDue
-				+ ", area=" + area + ", amountPayable=" + amountPayable + "]";
+		return "ResidentBean [id=" + id + ", name=" + name + ", contactNo="
+				+ contactNo + ", flatNo=" + flatNo + ", area=" + area + "]";
 	}
 
 }

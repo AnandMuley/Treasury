@@ -1,8 +1,9 @@
-controllers.controller('NavigationController',['$scope','$location',function($scope,$location){
+controllers.controller('NavigationController',
+		['$scope','$location','$rootScope',function($scope,$location,$rootScope){
 	
 	$scope.tabs = [{
-		name : 'users',
-		path : 'users'
+		name : 'residents',
+		path : 'residents'
 	},{
 		name : 'payments',
 		path : 'payments'
@@ -28,6 +29,11 @@ controllers.controller('NavigationController',['$scope','$location',function($sc
 	
 	$scope.loadView = function(tab){
 		$location.path(tab.path);
+	}
+	
+	$scope.logout = function(){
+		$rootScope.authenticated=false;
+		$location.path('/');
 	}
 	
 }]);

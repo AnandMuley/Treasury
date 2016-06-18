@@ -4,6 +4,18 @@
 	--color-teal:#009688;
 	--color-teal-100:#B2DFDB;
 	--color-amber-100:#FFECB3;
+	--color-red:#F44336;
+}
+
+@ttf:format('truetype');
+
+@font-face{
+	font-family:'Roboto-Local';
+	src:url('fonts/Roboto-Regular.ttf') @ttf;
+}
+
+.message-error{
+	color:var(--color-red);
 }
 
 .message-success{
@@ -28,7 +40,13 @@
 }
 
 body {
-	font-family: 'Roboto', Arial;
+	font-family: 'Roboto', Candara;
+}
+
+.login-title{
+	font-size: 30px;
+	color: var(--color-teal);
+	font-weight: 500;
 }
 
 .site-title {
@@ -56,7 +74,7 @@ body {
 }
 
 .dues-tile-grid .green {
-	background: var(--color-amber-100);
+	background: white;
 }
 
 .dues-tile-grid md-grid-tile {

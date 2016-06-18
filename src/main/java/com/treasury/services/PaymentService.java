@@ -12,7 +12,7 @@ import com.treasury.beans.ChequeBean;
 import com.treasury.beans.NetBankingBean;
 import com.treasury.beans.PaymentBean;
 import com.treasury.dtos.PaymentDto;
-import com.treasury.dtos.UserDto;
+import com.treasury.dtos.ResidentDto;
 import com.treasury.exceptions.InvalidPaymentModeException;
 import com.treasury.repositories.PaymentRepository;
 
@@ -25,7 +25,7 @@ public class PaymentService {
 	private String DDMMYYYY = "dd-MM-yyyy";
 
 	@Autowired
-	private UserService userService;
+	private ResidentService residentService;
 
 	@Autowired
 	private PaymentCalculator paymentCalculator;
@@ -36,13 +36,13 @@ public class PaymentService {
 	@Autowired
 	private DashboardService dashboardService;
 
-	public Double calculateAmountPayable(String userId) throws ParseException {
-		UserDto userDto = userService.findById(userId);
-		Double amountPayable = paymentCalculator.calculateAmountPayable(userDto
-				.getArea());
+	public Double calculateAmountPayable(String residentId) throws ParseException {
+		ResidentDto residentDto = residentService.findById(residentId);
+		Double amountPayable = paymentCalculator
+				.calculateAmountPayable(residentDto.getArea());
 		int noOfMonths = monthCalculator.getNoOfMonths();
 		Double totalAmount = amountPayable * noOfMonths;
-		Double amountPaid = dashboardService.getAmountPaid(userId);
+		Double amountPaid = dashboardService.getAmountPaid(residentId);
 		return totalAmount - amountPaid;
 	}
 
@@ -54,7 +54,7 @@ public class PaymentService {
 		}
 		PaymentBean paymentBean = new PaymentBean();
 		paymentBean.setMode(paymentDto.getMode());
-		paymentBean.setUserId(paymentDto.getUserId());
+		paymentBean.setResidentId(paymentDto.getResidentId());
 		paymentBean.setAmount(paymentDto.getAmount());
 		paymentBean.setPaymentDt(getDate(paymentDto.getPaymentDt(), DDMMYYYY));
 		paymentBean.getFromDate().setMonth(
@@ -107,8 +107,8 @@ public class PaymentService {
 		}
 	}
 
-	public void removeAll(String userId) {
-		paymentRepository.removeByUserId(userId);
+	public void removeAll(String residentId) {
+		paymentRepository.removeByResidentId(residentId);
 	}
 
 }

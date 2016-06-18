@@ -10,7 +10,7 @@ public class PaymentBean {
 
 	@Id
 	private String id;
-	private String userId;
+	private String residentId;
 	private String mode;
 	private Double amount;
 	private Date paymentDt;
@@ -27,12 +27,12 @@ public class PaymentBean {
 		this.id = id;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getResidentId() {
+		return residentId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setResidentId(String residentId) {
+		this.residentId = residentId;
 	}
 
 	public String getMode() {
@@ -93,11 +93,11 @@ public class PaymentBean {
 
 	@Override
 	public String toString() {
-		return "PaymentBean [id=" + id + ", userId=" + userId + ", mode="
-				+ mode + ", amount=" + amount + ", paymentDt=" + paymentDt
-				+ ", chequeBean=" + chequeBean + ", netBankingBean="
-				+ netBankingBean + ", fromDate=" + fromDate + ", toDate="
-				+ toDate + "]";
+		return "PaymentBean [id=" + id + ", residentId=" + residentId
+				+ ", mode=" + mode + ", amount=" + amount + ", paymentDt="
+				+ paymentDt + ", chequeBean=" + chequeBean
+				+ ", netBankingBean=" + netBankingBean + ", fromDate="
+				+ fromDate + ", toDate=" + toDate + "]";
 	}
 
 }

@@ -10,9 +10,9 @@ import com.treasury.beans.PaymentBean;
 
 public interface PaymentRepository extends MongoRepository<PaymentBean, String> {
 
-	@Query(value = "{'$group':{_id:'$userId',total:{'$sum':'$cashBean.amount'}}}")
+	@Query(value = "{'$group':{_id:'$residentId',total:{'$sum':'$cashBean.amount'}}}")
 	Map<String, Double> getTotalAmount();
 
-	List<PaymentBean> removeByUserId(String userId);
+	List<PaymentBean> removeByResidentId(String residentId);
 
 }

@@ -9,19 +9,19 @@
 			<md-card-content>
 				<md-input-container class="custom-input-container">
 					<label>Name</label>
-					<input ng-model="user.name"/>
+					<input ng-model="resident.name"/>
 				</md-input-container>
 				<md-input-container class="custom-input-container">
 					<label>Flat No</label>
-					<input ng-model="user.flatNo"/>
+					<input ng-model="resident.flatNo"/>
 				</md-input-container>
 				<md-input-container class="custom-input-container">
 					<label>Contact No</label>
-					<input ng-model="user.contactNo"/>
+					<input ng-model="resident.contactNo"/>
 				</md-input-container>
 				<md-input-container class="custom-input-container">
 					<label>Area</label>
-					<input ng-model="user.area"/>
+					<input ng-model="resident.area"/>
 				</md-input-container>
 			</md-card-content>
 			<md-card-actions layout="row" layout-align="center">
@@ -37,28 +37,15 @@
 			        md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
 			        md-row-height-gt-md="1:1" md-row-height="2:2"
 			        md-gutter="12px" md-gutter-gt-sm="8px">
-			    <md-grid-tile class="green" ng-repeat="user in users"  md-colspan="2" md-rowspan="2">
+			    <md-grid-tile ng-click="switchToEditmodeType(resident)" class="green" ng-repeat="resident in residents"  md-colspan="2" md-rowspan="2">
 						<img src="images/users/UserImg{{$index+1}}.png" width="141"/>
 					      <md-grid-tile-footer>
-					        <h3>{{user.name}}</h3>
-					        <h3>{{user.flatNo}}</h3>
-					        <h4>{{user.contactNo}}</h4>
+					        <h3>{{resident.name}}</h3>
+					        <h3>{{resident.flatNo}}</h3>
+					        <h4>{{resident.contactNo}}</h4>
 					      </md-grid-tile-footer>
 			    </md-grid-tile>
 			</md-grid-list>
 		</div>
-				
-		<!-- <md-list flex class="users-list">
-			<md-subheader class="md-no-sticky">Existing Users</md-subheader>
-			<md-list-item class="md-3-line" ng-repeat="user in users" ng-click="switchToEditmodeType(user)">
-				<img ng-src="images/users/UserImg{{$index+1}}.png" class="md-avatar" width="150" alt="No Image"/>
-				<div class="md-list-item-text" layout="column">
-					<h3>{{user.name}}</h3>
-					<h4>{{user.flatNo}}</h4>
-					<p>{{user.contactNo}}</p>
-					<md-icon md-svg-icon="alarm"></md-icon>
-				</div>
-			</md-list-item>
-		</md-list> -->
 	</div>
 </div>

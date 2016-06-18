@@ -3,7 +3,7 @@ package com.treasury.dtos;
 public class PaymentDto extends CommonDto {
 
 	private String id;
-	private String userId;
+	private String residentId;
 	private String mode;
 	private Double amount;
 	private String paymentDt;
@@ -22,12 +22,12 @@ public class PaymentDto extends CommonDto {
 		this.id = id;
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getResidentId() {
+		return residentId;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setResidentId(String residentId) {
+		this.residentId = residentId;
 	}
 
 	public String getMode() {
@@ -104,9 +104,9 @@ public class PaymentDto extends CommonDto {
 
 	@Override
 	public String toString() {
-		return "PaymentDto [id=" + id + ", userId=" + userId + ", mode=" + mode
-				+ ", amount=" + amount + ", paymentDt=" + paymentDt
-				+ ", chequeDto=" + chequeDto + ", netBankingDto="
+		return "PaymentDto [id=" + id + ", residentId=" + residentId
+				+ ", mode=" + mode + ", amount=" + amount + ", paymentDt="
+				+ paymentDt + ", chequeDto=" + chequeDto + ", netBankingDto="
 				+ netBankingDto + ", fromDateDto=" + fromDateDto
 				+ ", toDateDto=" + toDateDto + ", name=" + name
 				+ ", amountPayable=" + amountPayable + "]";

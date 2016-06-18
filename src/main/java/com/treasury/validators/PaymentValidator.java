@@ -21,8 +21,8 @@ public class PaymentValidator {
 				|| paymentDto.getToDateDto().getYear() == 0) {
 			paymentDto.getValidationErrors().add("To Date is mandatory");
 		}
-		if (StringUtils.isEmpty(paymentDto.getUserId())) {
-			paymentDto.getValidationErrors().add("Select a user");
+		if (StringUtils.isEmpty(paymentDto.getResidentId())) {
+			paymentDto.getValidationErrors().add("Select a Resident");
 		}
 	}
 }

@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.treasury.beans.PaymentBean;
-import com.treasury.beans.UserBean;
+import com.treasury.beans.ResidentBean;
 import com.treasury.dtos.PaymentDto;
 import com.treasury.dtos.ReportDto;
 import com.treasury.repositories.PaymentRepository;
-import com.treasury.repositories.UserRepository;
+import com.treasury.repositories.ResidentRepository;
 import com.treasury.utils.DtoCreatorUtil;
 
 @Service
@@ -20,7 +20,7 @@ public class ReportingService {
 	private PaymentRepository paymentRepository;
 
 	@Autowired
-	private UserRepository userRepository;
+	private ResidentRepository residentRepository;
 
 	@Autowired
 	private DtoCreatorUtil dtoCreatorUtil;
@@ -29,9 +29,10 @@ public class ReportingService {
 		ReportDto reportDto = new ReportDto();
 		List<PaymentBean> payments = paymentRepository.findAll();
 		for (PaymentBean paymentBean : payments) {
-			UserBean userBean = userRepository.findOne(paymentBean.getUserId());
+			ResidentBean residentBean = residentRepository.findOne(paymentBean
+					.getResidentId());
 			PaymentDto paymentDto = dtoCreatorUtil.createPaymentDto(
-					paymentBean, userBean);
+					paymentBean, residentBean);
 			reportDto.getPaymentDtos().add(paymentDto);
 		}
 		return reportDto;

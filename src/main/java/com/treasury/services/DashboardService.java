@@ -14,19 +14,19 @@ import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.stereotype.Service;
 
 import com.treasury.beans.PaymentBean;
-import com.treasury.beans.UserAmountBean;
-import com.treasury.beans.UserBean;
+import com.treasury.beans.ResidentAmountBean;
+import com.treasury.beans.ResidentBean;
 import com.treasury.dtos.DashboardDto;
-import com.treasury.dtos.UserDto;
+import com.treasury.dtos.ResidentDto;
 import com.treasury.repositories.PaymentRepository;
-import com.treasury.repositories.UserRepository;
+import com.treasury.repositories.ResidentRepository;
 import com.treasury.utils.DateConvertorUtil;
 
 @Service
 public class DashboardService {
 
 	@Autowired
-	private UserRepository userRepository;
+	private ResidentRepository residentRepository;
 
 	@Autowired
 	private PaymentRepository paymentRepository;
@@ -46,58 +46,60 @@ public class DashboardService {
 	@Autowired
 	private DateConvertorUtil dateConvertorUtil;
 
-	public Double getAmountPaid(String userId) {
-		List<UserAmountBean> amountBeans = getPayments();
-		for (UserAmountBean userAmountBean : amountBeans) {
-			if (userAmountBean.getUserId().equalsIgnoreCase(userId)) {
-				return userAmountBean.getAmount();
+	public Double getAmountPaid(String residentId) {
+		List<ResidentAmountBean> amountBeans = getPayments();
+		for (ResidentAmountBean residentAmountBean : amountBeans) {
+			if (residentAmountBean.getResidentId().equalsIgnoreCase(residentId)) {
+				return residentAmountBean.getAmount();
 			}
 		}
 		return 0.0;
 	}
 
 	public DashboardDto getDashboardDetails() throws ParseException {
-		List<UserAmountBean> amountBeans = getPayments();
+		List<ResidentAmountBean> amountBeans = getPayments();
 		DashboardDto dashboardDto = new DashboardDto();
 		dashboardDto.setStartDt(monthCalculator.getStartDate());
-		for (UserAmountBean userAmountBean : amountBeans) {
-			UserBean userBean = userRepository.findOne(userAmountBean
-					.getUserId());
-			UserDto userDto = new UserDto();
+		for (ResidentAmountBean residentAmountBean : amountBeans) {
+			ResidentBean residentBean = residentRepository.findOne(residentAmountBean
+					.getResidentId());
+			ResidentDto residentDto = new ResidentDto();
 			Double expectedAmount = paymentService
-					.calculateAmountPayable(userAmountBean.getUserId());
-			userDto.setAmountDue(expectedAmount);
-			userDto.setContactNo(userBean.getContactNo());
-			userDto.setFlatNo(userBean.getFlatNo());
-			userDto.setId(userBean.getId());
-			userDto.setName(userBean.getName());
-			dashboardDto.getUserDtos().add(userDto);
+					.calculateAmountPayable(residentAmountBean.getResidentId());
+			residentDto.setAmountDue(expectedAmount);
+			residentDto.setContactNo(residentBean.getContactNo());
+			residentDto.setFlatNo(residentBean.getFlatNo());
+			residentDto.setId(residentBean.getId());
+			residentDto.setName(residentBean.getName());
+			dashboardDto.getResidentDtos().add(residentDto);
 		}
 
-		List<String> userIds = dataExtractorService.getUserIds(amountBeans);
-		List<UserBean> userBeans = userRepository.findAll();
-		for (UserBean userBean : userBeans) {
-			if (!userIds.contains(userBean.getId())) {
-				UserDto userDto = new UserDto();
-				userDto.setAmountDue(paymentService
-						.calculateAmountPayable(userBean.getId()));
-				userDto.setContactNo(userBean.getContactNo());
-				userDto.setFlatNo(userBean.getFlatNo());
-				userDto.setId(userBean.getId());
-				userDto.setName(userBean.getName());
-				dashboardDto.getUserDtos().add(userDto);
+		List<String> residentIds = dataExtractorService.getResidentIds(amountBeans);
+		List<ResidentBean> residentBeans = residentRepository.findAll();
+		for (ResidentBean residentBean : residentBeans) {
+			if (!residentIds.contains(residentBean.getId())) {
+				ResidentDto residentDto = new ResidentDto();
+				residentDto.setAmountDue(paymentService
+						.calculateAmountPayable(residentBean.getId()));
+				residentDto.setContactNo(residentBean.getContactNo());
+				residentDto.setFlatNo(residentBean.getFlatNo());
+				residentDto.setId(residentBean.getId());
+				residentDto.setName(residentBean.getName());
+				dashboardDto.getResidentDtos().add(residentDto);
 			}
 		}
 		return dashboardDto;
 	}
 
-	private List<UserAmountBean> getPayments() {
-		Aggregation aggregation = newAggregation(group("userId").sum("amount")
-				.as("amount"), project("amount").and("userId")
+	private List<ResidentAmountBean> getPayments() {
+		Aggregation aggregation = newAggregation(group("residentId")
+				.sum("amount").as("amount"), project("amount").and("residentId")
 				.previousOperation());
-		AggregationResults<UserAmountBean> userAmtResults = mongoTemplate
-				.aggregate(aggregation, PaymentBean.class, UserAmountBean.class);
-		List<UserAmountBean> amountBeans = userAmtResults.getMappedResults();
+		AggregationResults<ResidentAmountBean> residentAmtResults = mongoTemplate
+				.aggregate(aggregation, PaymentBean.class,
+						ResidentAmountBean.class);
+		List<ResidentAmountBean> amountBeans = residentAmtResults
+				.getMappedResults();
 		return amountBeans;
 	}
 
