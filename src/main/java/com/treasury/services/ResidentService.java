@@ -37,6 +37,16 @@ public class ResidentService {
 		return residentDto;
 	}
 
+	public List<String> getResidentIds(String createdBy) {
+		List<ResidentBean> residentBeans = residentRepository
+				.findByCreatedBy(createdBy);
+		List<String> residentIds = new ArrayList<String>();
+		for (ResidentBean residentBean : residentBeans) {
+			residentIds.add(residentBean.getId());
+		}
+		return residentIds;
+	}
+
 	public void create(ResidentDto residentDto) {
 		ResidentBean residentBean = beanCreatorUtil
 				.createResidentBean(residentDto);

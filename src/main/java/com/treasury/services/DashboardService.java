@@ -5,13 +5,13 @@ import static org.springframework.data.mongodb.core.aggregation.Aggregation.newA
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
 
 import com.treasury.beans.PaymentBean;
@@ -19,18 +19,13 @@ import com.treasury.beans.ResidentAmountBean;
 import com.treasury.beans.ResidentBean;
 import com.treasury.dtos.DashboardDto;
 import com.treasury.dtos.ResidentDto;
-import com.treasury.repositories.PaymentRepository;
 import com.treasury.repositories.ResidentRepository;
-import com.treasury.utils.DateConvertorUtil;
 
 @Service
 public class DashboardService {
 
 	@Autowired
 	private ResidentRepository residentRepository;
-
-	@Autowired
-	private PaymentRepository paymentRepository;
 
 	@Autowired
 	private PaymentService paymentService;
@@ -45,7 +40,7 @@ public class DashboardService {
 	private MonthCalculator monthCalculator;
 
 	@Autowired
-	private DateConvertorUtil dateConvertorUtil;
+	private ResidentService residentService;
 
 	public Double getAmountPaid(String residentId, String createdBy) {
 		List<ResidentAmountBean> amountBeans = getPayments(createdBy);
@@ -96,8 +91,8 @@ public class DashboardService {
 	}
 
 	private List<ResidentAmountBean> getPayments(String createdBy) {
+		List<String> residentIds = residentService.getResidentIds(createdBy);
 		Aggregation aggregation = newAggregation(
-				Aggregation.match(Criteria.where("createBy").is(createdBy)),
 				group("residentId").sum("amount").as("amount"),
 				project("amount").and("residentId").previousOperation());
 		AggregationResults<ResidentAmountBean> residentAmtResults = mongoTemplate
@@ -105,7 +100,13 @@ public class DashboardService {
 						ResidentAmountBean.class);
 		List<ResidentAmountBean> amountBeans = residentAmtResults
 				.getMappedResults();
-		return amountBeans;
+		List<ResidentAmountBean> filteredBeans = new ArrayList<ResidentAmountBean>();
+		for (ResidentAmountBean residentAmountBean : amountBeans) {
+			if (residentIds.contains(residentAmountBean.getResidentId())) {
+				filteredBeans.add(residentAmountBean);
+			}
+		}
+		return filteredBeans;
 	}
 
 }
