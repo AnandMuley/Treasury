@@ -6,6 +6,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -25,10 +26,10 @@ public class DuesResource {
 	private DashboardService dashboardService;
 
 	@GET
-	public Response getAll() {
+	public Response getAll(@QueryParam("createdBy") String createdBy) {
 		Response response = null;
 		try {
-			DashboardDto dashboardDto = dashboardService.getDashboardDetails();
+			DashboardDto dashboardDto = dashboardService.getDashboardDetails(createdBy);
 			response = Response.ok(dashboardDto).build();
 		} catch (ParseException e) {
 			e.printStackTrace();

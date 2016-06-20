@@ -12,6 +12,7 @@ public class ResidentDto {
 	 */
 	private Double area;
 	private Double amountPayable;
+	private String createdBy;
 
 	public String getId() {
 		return id;
@@ -69,11 +70,20 @@ public class ResidentDto {
 		this.amountPayable = amountPayable;
 	}
 
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
 	@Override
 	public String toString() {
 		return "ResidentDto [id=" + id + ", name=" + name + ", contactNo="
 				+ contactNo + ", flatNo=" + flatNo + ", amountDue=" + amountDue
-				+ ", area=" + area + ", amountPayable=" + amountPayable + "]";
+				+ ", area=" + area + ", amountPayable=" + amountPayable
+				+ ", createdBy=" + createdBy + "]";
 	}
 
 }

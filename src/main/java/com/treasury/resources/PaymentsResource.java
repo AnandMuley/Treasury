@@ -8,6 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -26,7 +27,7 @@ import com.treasury.services.ValidationService;
 @Path("payments")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class PaymentsController {
+public class PaymentsResource {
 
 	@Autowired
 	private PaymentService paymentService;
@@ -42,11 +43,12 @@ public class PaymentsController {
 
 	@GET
 	@Path("{rid}/amountpayable")
-	public Response getAmountPayable(@PathParam("rid") String residentId) {
+	public Response getAmountPayable(@PathParam("rid") String residentId,
+			@QueryParam("createdBy") String createdBy) {
 		Response response = null;
 		try {
-			Double amountPayable = paymentService
-					.calculateAmountPayable(residentId);
+			Double amountPayable = paymentService.calculateAmountPayable(
+					residentId, createdBy);
 			PaymentDto paymentDto = new PaymentDto();
 			paymentDto.setAmountPayable(amountPayable);
 			response = Response.ok(paymentDto).build();

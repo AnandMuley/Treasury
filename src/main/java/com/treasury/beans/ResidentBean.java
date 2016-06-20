@@ -12,6 +12,7 @@ public class ResidentBean {
 	private Long contactNo;
 	private String flatNo;
 	private Double area;
+	private String createdBy;
 
 	public String getId() {
 		return id;
@@ -53,10 +54,19 @@ public class ResidentBean {
 		this.area = area;
 	}
 
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
 	@Override
 	public String toString() {
 		return "ResidentBean [id=" + id + ", name=" + name + ", contactNo="
-				+ contactNo + ", flatNo=" + flatNo + ", area=" + area + "]";
+				+ contactNo + ", flatNo=" + flatNo + ", area=" + area
+				+ ", createdBy=" + createdBy + "]";
 	}
 
 }

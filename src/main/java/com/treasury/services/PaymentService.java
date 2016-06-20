@@ -36,13 +36,13 @@ public class PaymentService {
 	@Autowired
 	private DashboardService dashboardService;
 
-	public Double calculateAmountPayable(String residentId) throws ParseException {
+	public Double calculateAmountPayable(String residentId,String createdBy) throws ParseException {
 		ResidentDto residentDto = residentService.findById(residentId);
 		Double amountPayable = paymentCalculator
 				.calculateAmountPayable(residentDto.getArea());
 		int noOfMonths = monthCalculator.getNoOfMonths();
 		Double totalAmount = amountPayable * noOfMonths;
-		Double amountPaid = dashboardService.getAmountPaid(residentId);
+		Double amountPaid = dashboardService.getAmountPaid(residentId,createdBy);
 		return totalAmount - amountPaid;
 	}
 

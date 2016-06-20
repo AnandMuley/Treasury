@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -19,6 +20,7 @@ import javax.ws.rs.core.UriInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import com.treasury.dtos.ResidentDto;
 import com.treasury.services.ResidentService;
@@ -40,17 +42,21 @@ public class ResidentResource {
 	UriInfo uriInfo;
 
 	@GET
-	public Response getAll() {
-		List<ResidentDto> residentDtos = residentService.getAll();
+	@Path("all")
+	public Response getAll(@QueryParam("createdBy") String createdBy) {
+		if (StringUtils.isEmpty(createdBy)) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		List<ResidentDto> residentDtos = residentService.getAll(createdBy);
 		return Response.ok(residentDtos).build();
 	}
 
-	@GET
-	@Path("{residentId}")
-	public Response getResident(@PathParam("residentId") String residentId) {
-		ResidentDto residentDto = residentService.findById(residentId);
-		return Response.ok(residentDto).build();
-	}
+	// @GET
+	// @Path("{residentId}")
+	// public Response getResident(@PathParam("residentId") String residentId) {
+	// ResidentDto residentDto = residentService.findById(residentId);
+	// return Response.ok(residentDto).build();
+	// }
 
 	@POST
 	public Response createResident(ResidentDto residentDto) {

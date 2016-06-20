@@ -16,6 +16,7 @@ public class BeanCreatorUtil {
 		residentBean.setFlatNo(residentDto.getFlatNo());
 		residentBean.setName(residentDto.getName());
 		residentBean.setArea(residentDto.getArea());
+		residentBean.setCreatedBy(residentDto.getCreatedBy());
 		return residentBean;
 	}
 

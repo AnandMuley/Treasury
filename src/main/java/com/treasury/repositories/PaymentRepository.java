@@ -15,4 +15,7 @@ public interface PaymentRepository extends MongoRepository<PaymentBean, String> 
 
 	List<PaymentBean> removeByResidentId(String residentId);
 
+	@Query(value = "{'residentId':{$in:?0}}")
+	List<PaymentBean> findAllByResidentIds(List<String> residentIds);
+
 }

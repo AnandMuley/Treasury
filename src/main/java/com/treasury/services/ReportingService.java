@@ -1,5 +1,6 @@
 package com.treasury.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,19 @@ public class ReportingService {
 	@Autowired
 	private DtoCreatorUtil dtoCreatorUtil;
 
-	public ReportDto getReport() {
+	/*
+	 * Need to optimize below method
+	 */
+	public ReportDto getReport(String createdBy) {
 		ReportDto reportDto = new ReportDto();
-		List<PaymentBean> payments = paymentRepository.findAll();
+		List<ResidentBean> residentBeans = residentRepository
+				.findByCreatedBy(createdBy);
+		List<String> residentIds = new ArrayList<String>();
+		for (ResidentBean residentBean : residentBeans) {
+			residentIds.add(residentBean.getId());
+		}
+		List<PaymentBean> payments = paymentRepository
+				.findAllByResidentIds(residentIds);
 		for (PaymentBean paymentBean : payments) {
 			ResidentBean residentBean = residentRepository.findOne(paymentBean
 					.getResidentId());

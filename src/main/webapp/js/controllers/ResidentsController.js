@@ -1,6 +1,6 @@
 controllers.controller('ResidentsController',
-		['$scope','ResidentResource','LoginService',
-		 function($scope,Resident,loginService){
+		['$scope','ResidentResource','LoginService','$rootScope',
+		 function($scope,Resident,loginService,$rootScope){
 	
 	loginService.isUserLoggedIn();
 			
@@ -11,7 +11,7 @@ controllers.controller('ResidentsController',
 	}
 	$scope.modeType = $scope.modeTypes['add'];
 	
-	var residents = Resident.query(function(){
+	var residents = Resident.query({createdBy:$rootScope.auth.id},function(){
 		$scope.residents = residents;
 	});
 	
@@ -26,7 +26,7 @@ controllers.controller('ResidentsController',
 	}
 	
 	$scope.loadResidents = function(){
-		var residents = Resident.query(function(){
+		var residents = Resident.query({createdBy:$rootScope.auth.id},function(){
 			$scope.residents = residents;
 		});
 	}
@@ -46,6 +46,7 @@ controllers.controller('ResidentsController',
 	
 	$scope.add = function(){
 		var newResident = new Resident({
+			createdBy:$rootScope.auth.id,
 			name:$scope.resident.name,
 			flatNo:$scope.resident.flatNo,
 			contactNo:$scope.resident.contactNo,

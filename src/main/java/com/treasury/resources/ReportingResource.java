@@ -4,6 +4,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -24,8 +25,8 @@ public class ReportingResource {
 
 	@GET
 	@Path("payments")
-	public Response getPaymentReports() {
-		ReportDto reportDto = reportingService.getReport();
+	public Response getPaymentReports(@QueryParam("createdBy") String createdBy) {
+		ReportDto reportDto = reportingService.getReport(createdBy);
 		return Response.ok(reportDto).build();
 	}
 

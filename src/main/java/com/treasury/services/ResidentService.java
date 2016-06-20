@@ -32,24 +32,29 @@ public class ResidentService {
 
 	public ResidentDto findById(String residentId) {
 		ResidentBean residentBean = residentRepository.findOne(residentId);
-		ResidentDto residentDto = dtoCreatorUtil.createResidentDto(residentBean);
+		ResidentDto residentDto = dtoCreatorUtil
+				.createResidentDto(residentBean);
 		return residentDto;
 	}
 
 	public void create(ResidentDto residentDto) {
-		ResidentBean residentBean = beanCreatorUtil.createResidentBean(residentDto);
+		ResidentBean residentBean = beanCreatorUtil
+				.createResidentBean(residentDto);
 		residentRepository.save(residentBean);
 		residentDto.setId(residentBean.getId());
 	}
 
-	public List<ResidentDto> getAll() {
+	public List<ResidentDto> getAll(String createdBy) {
 		List<ResidentBean> beans = residentRepository.findAll();
 		List<ResidentDto> residentDtos = new ArrayList<ResidentDto>();
 		for (ResidentBean residentBean : beans) {
-			ResidentDto residentDto = dtoCreatorUtil.createResidentDto(residentBean);
-			residentDto.setAmountPayable(paymentCalculator
-					.calculateAmountPayable(residentDto.getArea()));
-			residentDtos.add(residentDto);
+			if (createdBy.equals(residentBean.getCreatedBy())) {
+				ResidentDto residentDto = dtoCreatorUtil
+						.createResidentDto(residentBean);
+				residentDto.setAmountPayable(paymentCalculator
+						.calculateAmountPayable(residentDto.getArea()));
+				residentDtos.add(residentDto);
+			}
 		}
 		return residentDtos;
 	}

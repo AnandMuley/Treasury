@@ -19,6 +19,9 @@ controllers.controller('LoginController',
 				console.log("SUCCESS : "+JSON.stringify(value));
 				if(value.id!=null){
 					$rootScope.authenticated=true;
+					$rootScope.auth = {
+							id:value.id
+					}
 					$location.path('/residents');
 					$scope.success=true;
 				}else{
