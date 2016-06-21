@@ -32,8 +32,10 @@ public class ResidentService {
 
 	public ResidentDto findById(String residentId) {
 		ResidentBean residentBean = residentRepository.findOne(residentId);
-		ResidentDto residentDto = dtoCreatorUtil
-				.createResidentDto(residentBean);
+		ResidentDto residentDto = null;
+		if (residentBean != null) {
+			residentDto = dtoCreatorUtil.createResidentDto(residentBean);
+		}
 		return residentDto;
 	}
 

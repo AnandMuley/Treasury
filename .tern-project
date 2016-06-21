@@ -1,1 +1,17 @@
-{"ecmaVersion":5,"plugins":{"guess-types":{},"outline":{},"angular":{}},"libs":["browser"],"ide":{}}
+{
+  "ecmaVersion": 5,
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    },
+    "angular": {
+      
+    }
+  },
+  "libs": [
+    "browser"
+  ]
+}

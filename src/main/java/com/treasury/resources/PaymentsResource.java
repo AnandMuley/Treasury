@@ -8,14 +8,15 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
+import com.treasury.dtos.BalanceDto;
 import com.treasury.dtos.PaymentDto;
 import com.treasury.exceptions.InvalidPaymentModeException;
 import com.treasury.services.PaymentCalculator;
@@ -42,21 +43,14 @@ public class PaymentsResource {
 	private PaymentCalculator paymentCalculator;
 
 	@GET
-	@Path("{rid}/amountpayable")
-	public Response getAmountPayable(@PathParam("rid") String residentId,
-			@QueryParam("createdBy") String createdBy) {
-		Response response = null;
-		try {
-			Double amountPayable = paymentService.calculateAmountPayable(
-					residentId, createdBy);
-			PaymentDto paymentDto = new PaymentDto();
-			paymentDto.setAmountPayable(amountPayable);
-			response = Response.ok(paymentDto).build();
-		} catch (ParseException e) {
-			e.printStackTrace();
-			response = Response.serverError().build();
+	@Path("{rid}/balance")
+	public Response getAmountPayable(@PathParam("rid") String residentId) {
+		if (StringUtils.isEmpty(residentId)
+				|| "select".equalsIgnoreCase(residentId)) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
-		return response;
+		BalanceDto balanceDto = paymentService.getBalance(residentId);
+		return Response.ok(balanceDto).build();
 	}
 
 	@POST

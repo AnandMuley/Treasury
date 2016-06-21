@@ -1,7 +1,7 @@
 controllers.controller('PaymentsController',
 		['$scope','PaymentResource','LoginService',
 		 function($scope,Payment,loginService){
-	
+
 	loginService.isUserLoggedIn();
 	
 	function createNewPayment(){
@@ -12,8 +12,17 @@ controllers.controller('PaymentsController',
 			toDateDto:null,
 			mode:'paymentMode'});
 	}
-	
+
 	$scope.payment = createNewPayment();
+	
+	$scope.loadBalanceCard = function(){
+		var residentId = $scope.payment.residentId;
+		var balanceRes = createNewPayment();
+		var balance = balanceRes.$balance({residentId:residentId},function(data){
+			$scope.balance = data;
+		});
+	}
+	
 	
 	$scope.savePayment = function(){
 		$scope.payment.toDateDto.year = $scope.payment.fromDateDto.year;

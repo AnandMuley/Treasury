@@ -1,6 +1,7 @@
 package com.treasury.services;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.joda.time.LocalDate;
@@ -12,7 +13,7 @@ import com.treasury.dtos.DateDto;
 import com.treasury.utils.DateConvertorUtil;
 
 @Component
-public class MonthCalculator {
+public class DateCalculator {
 
 	private String startDate = "01-Jan-2016";
 
@@ -41,6 +42,16 @@ public class MonthCalculator {
 
 	public String getStartDate() {
 		return startDate;
+	}
+
+	public Date getDate(String dateStr, String pattern) throws ParseException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+		return dateFormat.parse(dateStr);
+	}
+
+	public String getDate(Date dateStr, String pattern) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+		return dateFormat.format(dateStr);
 	}
 
 }

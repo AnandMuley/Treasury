@@ -5,6 +5,7 @@
 	--color-teal-100:#B2DFDB;
 	--color-amber-100:#FFECB3;
 	--color-red:#F44336;
+	--color-amber:#FFD54F;
 }
 
 @ttf:format('truetype');
@@ -12,6 +13,22 @@
 @font-face{
 	font-family:'Roboto-Local';
 	src:url('fonts/Roboto-Regular.ttf') @ttf;
+}
+
+.balcard{
+	background-color: var(--color-amber);
+}
+
+.balcard h2{
+	color: white;
+}
+
+.balcard h3{
+	font-weight: 400;
+}
+
+.balcard .amount{
+	color:white;
 }
 
 .message-error{

@@ -8,11 +8,11 @@ import com.treasury.dtos.DateDto;
 
 public class MonthCalculatorTest {
 
-	private MonthCalculator calculator;
+	private DateCalculator calculator;
 
 	@BeforeClass
 	public void init() {
-		calculator = new MonthCalculator();
+		calculator = new DateCalculator();
 	}
 
 	@Test

@@ -1,11 +1,35 @@
 <div ng-if="message!=null" layout="row" layout-align="center">
 	<span class="message-success">{{message}}</span>
 </div>
-<div class="payments-container" layout="row" layout-align="center">
+<div class="payments-container" layout="row">
+	<div flex="20">
+		<md-card  ng-if="payment.residentId!='select'" class="md-whiteframe-4dp md-padding balcard">
+			<md-card-title>
+				<md-card-title-text>
+					<h2>Balance Card</h2>
+				</md-card-title-text>
+			</md-card-title>
+			<md-card-content>
+				<div layout="row">
+					<h3>Payable</h3>
+				</div>
+				<div layout="row" class="amount">&#8377; {{balance.payable}}</div>
+				<div layout="row">
+					<h3>Paid</h3>
+				</div>
+				<div layout="row" class="amount">&#8377; {{balance.paid}}</div>
+				<div layout="row">
+					<h3>Due</h3>
+				</div>
+				<div layout="row" class="amount">&#8377; {{balance.due}}</div>
+			</md-card-content>
+		</md-card>
+	</div>
+	<div flex="10"></div>
 	<div flex="50">
 		<div layout="row" layout-align="center">
 			<md-input-container flex="40">
-				<md-select class="user-select" ng-model="payment.residentId" ng-controller="ResidentsController">
+				<md-select aria-label="Select Resident" class="user-select" ng-change="loadBalanceCard()" ng-model="payment.residentId" ng-controller="ResidentsController">
 					<md-option value="select" selected="selected">Select Resident</md-option>
 					<md-option value="{{resident.id}}" ng-repeat="resident in residents">{{resident.name}}</md-option>
 				</md-select>
@@ -23,7 +47,7 @@
 					<div layout="row" ng-controller="DateController" >
 						<md-input-container flex="20">
 							<md-select ng-model="payment.fromDateDto.year">
-								<md-option value="year">Year</md-option>
+								<md-option value="year" selected="selected">Year</md-option>
 								<md-option value="{{year}}" ng-repeat="year in years">{{year}}</md-option>
 							</md-select>
 						</md-input-container>

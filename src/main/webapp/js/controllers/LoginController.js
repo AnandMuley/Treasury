@@ -16,7 +16,6 @@ controllers.controller('LoginController',
 		var username = $scope.user.username;
 		var password = $scope.user.password;
 		$scope.user.$findUser({username:username,password:password},function(value,responseHeaders){
-				console.log("SUCCESS : "+JSON.stringify(value));
 				if(value.id!=null){
 					$rootScope.authenticated=true;
 					$rootScope.auth = {
