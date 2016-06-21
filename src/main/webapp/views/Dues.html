@@ -4,7 +4,7 @@
 	        md-row-height-gt-md="1:1" md-row-height="2:2"
 	        md-gutter="12px" md-gutter-gt-sm="8px" >
 	    <md-grid-tile class="green" ng-repeat="resident in dues.residentDtos">
-				 <img src="images/users/UserImg2.png" width="194"/>
+				 <img ng-controller="ImageController" ng-src="images/users/{{getImage(resident)}}" width="194"/>
 			      <md-grid-tile-footer>
 			        <h3>{{resident.name}} - &#8377; {{resident.amountDue}}</h3>
 			      </md-grid-tile-footer>

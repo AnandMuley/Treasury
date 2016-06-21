@@ -1,6 +1,7 @@
 <div layout="row">
 	<div flex="30">
 		<md-card class="md-padding md-whiteframe-5dp">
+			<div ng-if="message" class="message-success" layout="row" layout-align="center">{{message}}</div>
 			<md-card-title>
 				<md-card-title-text layout="row" class="md-primary" layout-align="center">
 					<h3 class="card-title">{{modeType.title}}</h3>
@@ -23,12 +24,22 @@
 					<label>Area</label>
 					<input ng-model="resident.area"/>
 				</md-input-container>
+				<md-input-container class="custom-input-container">
+					<md-select ng-model="resident.gender">
+						<md-option selected="selected" value="default">Gender</md-option>
+						<md-option value="m">Male</md-option>
+						<md-option value="f">Female</md-option>
+					</md-select>
+				</md-input-container>
 			</md-card-content>
 			<md-card-actions layout="row" layout-align="center">
 				<md-button ng-if="modeType.type=='add'" ng-click="add()" class="md-raised md-primary md-hue-2">ADD</md-button>
 				<md-button ng-if="modeType.type=='edit'" ng-click="update()" class="md-raised md-accent md-hue-3">Update</md-button>
 				<md-button ng-if="modeType.type=='edit'" ng-click="resetmodeType()" class="md-raised">Cancel</md-button>				
 			</md-card-actions>
+			<div ng-if="modeType.type=='edit'" layout="row" layout-align="center">
+				<md-button ng-click="delete()">Delete</md-button>
+			</div>
 		</md-card>
 	</div>
 	<div flex="70">
@@ -38,11 +49,12 @@
 			        md-row-height-gt-md="1:1" md-row-height="2:2"
 			        md-gutter="12px" md-gutter-gt-sm="8px">
 			    <md-grid-tile ng-click="switchToEditmodeType(resident)" class="green" ng-repeat="resident in residents"  md-colspan="2" md-rowspan="2">
-						<img src="images/users/UserImg2.png" width="141"/>
-					      <md-grid-tile-footer>
+						  <img ng-controller="ImageController" ng-src="images/users/{{getImage(resident)}}" width="141"/>
+						  <md-grid-tile-footer>
 					        <h3>{{resident.name}}</h3>
 					        <h3>{{resident.flatNo}}</h3>
 					        <h4>{{resident.contactNo}}</h4>
+					        <h4 title="Area">{{resident.area}} sq.ft</h4>
 					      </md-grid-tile-footer>
 			    </md-grid-tile>
 			</md-grid-list>

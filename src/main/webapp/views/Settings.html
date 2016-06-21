@@ -1,0 +1,21 @@
+<div ng-if="message!=null" layout="row" layout-align="center">
+	<div flex="20" class="message-success text-align-center" layout-align="center">{{message}}</div>
+</div>
+<div layout="row" layout-align="center" class="md-padding">
+	<md-card flex="40" layout-align="center" class="md-padding">
+		<md-card-title>
+			<md-card-title-text layout="row" layout-align="center">
+				<h3>Settings</h3>
+			</md-card-title-text>
+		</md-card-title>
+		<md-card-content layout="row" layout-align="center">
+				<md-input-container>
+					<label>Rate (&#8377;/sq.ft)</label>
+					<input ng-model="setting.maintRate"/>
+				</md-input-container>
+		</md-card-content>
+		<md-card-actions layout="row" layout-align="center">
+			<md-button ng-click="save()" class="md-raised md-primary">SAVE</md-button>
+		</md-card-actions>
+	</md-card>
+</div>

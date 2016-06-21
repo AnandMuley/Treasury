@@ -64,7 +64,8 @@ public class ResidentService {
 				ResidentDto residentDto = dtoCreatorUtil
 						.createResidentDto(residentBean);
 				residentDto.setAmountPayable(paymentCalculator
-						.calculateAmountPayable(residentDto.getArea()));
+						.calculateAmountPayable(residentDto.getArea(),
+								createdBy));
 				residentDtos.add(residentDto);
 			}
 		}
@@ -81,6 +82,7 @@ public class ResidentService {
 		bean.setContactNo(residentDto.getContactNo());
 		bean.setFlatNo(residentDto.getFlatNo());
 		bean.setName(residentDto.getName());
+		bean.setGender(residentDto.getGender());
 		residentRepository.save(bean);
 	}
 

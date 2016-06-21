@@ -51,13 +51,6 @@ public class ResidentResource {
 		return Response.ok(residentDtos).build();
 	}
 
-	// @GET
-	// @Path("{residentId}")
-	// public Response getResident(@PathParam("residentId") String residentId) {
-	// ResidentDto residentDto = residentService.findById(residentId);
-	// return Response.ok(residentDto).build();
-	// }
-
 	@POST
 	public Response createResident(ResidentDto residentDto) {
 		residentService.create(residentDto);

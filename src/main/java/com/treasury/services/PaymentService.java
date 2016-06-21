@@ -45,11 +45,11 @@ public class PaymentService {
 	@Autowired
 	private MongoTemplate mongoTemplate;
 
-	public BalanceDto getBalance(String residentId) {
+	public BalanceDto getBalance(String residentId, String createdBy) {
 		BalanceDto balanceDto = new BalanceDto();
 		try {
 			balanceDto.setResidentId(residentId);
-			Double payable = calculateAmountPayable(residentId);
+			Double payable = calculateAmountPayable(residentId, createdBy);
 			balanceDto.setPayable(payable);
 			Double paid = getAmountPaid(residentId);
 			balanceDto.setPaid(paid);
@@ -113,11 +113,11 @@ public class PaymentService {
 		return filteredBeans;
 	}
 
-	public Double calculateAmountPayable(String residentId)
+	public Double calculateAmountPayable(String residentId, String createdBy)
 			throws ParseException {
 		ResidentDto residentDto = residentService.findById(residentId);
-		Double amountPayable = paymentCalculator
-				.calculateAmountPayable(residentDto.getArea());
+		Double amountPayable = paymentCalculator.calculateAmountPayable(
+				residentDto.getArea(), createdBy);
 		int noOfMonths = dateCalculator.getNoOfMonths();
 		Double totalAmount = amountPayable * noOfMonths;
 		return totalAmount;
@@ -125,7 +125,7 @@ public class PaymentService {
 
 	public Double calculateAmountDue(String residentId, String createdBy)
 			throws ParseException {
-		Double amountPayable = calculateAmountPayable(residentId);
+		Double amountPayable = calculateAmountPayable(residentId, createdBy);
 		Double amountPaid = getAmountPaid(residentId, createdBy);
 		return amountPayable - amountPaid;
 	}
@@ -183,7 +183,10 @@ public class PaymentService {
 	}
 
 	public void removeAll(String residentId) {
-		paymentRepository.removeByResidentId(residentId);
+		// TODO Optimize this to delete based on resident id
+		List<PaymentBean> paymentBeans = paymentRepository
+				.findByResidentId(residentId);
+		paymentRepository.delete(paymentBeans);
 	}
 
 }

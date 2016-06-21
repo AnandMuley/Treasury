@@ -13,6 +13,7 @@ public class ResidentBean {
 	private String flatNo;
 	private Double area;
 	private String createdBy;
+	private String gender;
 
 	public String getId() {
 		return id;
@@ -62,11 +63,19 @@ public class ResidentBean {
 		this.createdBy = createdBy;
 	}
 
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	@Override
 	public String toString() {
 		return "ResidentBean [id=" + id + ", name=" + name + ", contactNo="
 				+ contactNo + ", flatNo=" + flatNo + ", area=" + area
-				+ ", createdBy=" + createdBy + "]";
+				+ ", createdBy=" + createdBy + ", gender=" + gender + "]";
 	}
 
 }

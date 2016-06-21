@@ -1,6 +1,6 @@
 controllers.controller('PaymentsController',
-		['$scope','PaymentResource','LoginService',
-		 function($scope,Payment,loginService){
+		['$scope','PaymentResource','LoginService','$rootScope',
+		 function($scope,Payment,loginService,$rootScope){
 
 	loginService.isUserLoggedIn();
 	
@@ -16,9 +16,10 @@ controllers.controller('PaymentsController',
 	$scope.payment = createNewPayment();
 	
 	$scope.loadBalanceCard = function(){
+		var createdBy = $rootScope.auth.id;
 		var residentId = $scope.payment.residentId;
 		var balanceRes = createNewPayment();
-		var balance = balanceRes.$balance({residentId:residentId},function(data){
+		var balance = balanceRes.$balance({residentId:residentId,createdBy:createdBy},function(data){
 			$scope.balance = data;
 		});
 	}

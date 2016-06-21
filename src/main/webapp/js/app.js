@@ -1,5 +1,5 @@
 var app = angular.module('Treasury',['ngRoute','ngMaterial','TreasuryServices','TreasuryControllers']);
-var services = angular.module('TreasuryServices',['ngResource']);
+var services = angular.module('TreasuryServices',['ngResource','ngCookies']);
 var controllers = angular.module('TreasuryControllers',[]);
 
 app.config(['$routeProvider','$mdIconProvider','$mdThemingProvider',
@@ -22,6 +22,9 @@ app.config(['$routeProvider','$mdIconProvider','$mdThemingProvider',
 	}).when('/registration',{
 		templateUrl : 'views/Registration.html',
 		controller : 'LoginController'
+	}).when('/settings',{
+		templateUrl : 'views/Settings.html',
+		controller : 'SettingsController'
 	});
 	
 //	$mdIconProvider.iconSet('social','img/icons/sets/social-icons.svg',24).defaultIconSet('img/icons/sets/core-icons.svg');

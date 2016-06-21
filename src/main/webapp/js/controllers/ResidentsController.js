@@ -23,6 +23,9 @@ controllers.controller('ResidentsController',
 	$scope.update = function(){
 		$id = $scope.resident.id;
 		$scope.resident.$update({residentId:$id},$scope.resident);
+		$scope.resident = {};
+		$scope.modeType = $scope.modeTypes['add'];
+		$scope.message = "Details saved successfully !";
 	}
 	
 	$scope.loadResidents = function(){
@@ -44,13 +47,23 @@ controllers.controller('ResidentsController',
 		$scope.resident = editingResident;
 	}
 	
+	$scope.delete = function(){
+		var $id = $scope.resident.id;
+		$scope.resident.$delete({residentId:$id},function(){
+			$scope.loadResidents();
+			$scope.resident = {};
+			$scope.modeType = $scope.modeTypes['add'];
+		});
+	}
+	
 	$scope.add = function(){
 		var newResident = new Resident({
 			createdBy:$rootScope.auth.id,
 			name:$scope.resident.name,
 			flatNo:$scope.resident.flatNo,
 			contactNo:$scope.resident.contactNo,
-			area : $scope.resident.area});
+			area : $scope.resident.area,
+			gender:$scope.resident.gender});
 		newResident.$save({},function(){
 			$scope.resident = {};
 			$scope.loadResidents();

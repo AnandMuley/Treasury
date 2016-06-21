@@ -1,6 +1,6 @@
 controllers.controller('LoginController',
-		['$scope','UsersResource','$rootScope','$location','$rootScope',
-		 function($scope,User,$rootScope,$location,$rootScope){
+		['$scope','UsersResource','$rootScope','$location','$rootScope','LoginService',
+		 function($scope,User,$rootScope,$location,$rootScope,loginService){
 
 	$scope.user = new User();
 	$scope.success = false;
@@ -21,6 +21,7 @@ controllers.controller('LoginController',
 					$rootScope.auth = {
 							id:value.id
 					}
+					loginService.addAuthCookie(value);
 					$location.path('/residents');
 					$scope.success=true;
 				}else{

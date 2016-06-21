@@ -10,6 +10,7 @@ import com.treasury.beans.ResidentBean;
 import com.treasury.dtos.DashboardDto;
 import com.treasury.dtos.ResidentDto;
 import com.treasury.repositories.ResidentRepository;
+import com.treasury.utils.DtoCreatorUtil;
 
 @Service
 public class DashboardService {
@@ -23,6 +24,9 @@ public class DashboardService {
 	@Autowired
 	private DateCalculator dateCalculator;
 
+	@Autowired
+	private DtoCreatorUtil dtoCreatorUtil;
+
 	public DashboardDto getDashboardDetails(String createdBy)
 			throws ParseException {
 
@@ -33,19 +37,16 @@ public class DashboardService {
 				.findByCreatedBy(createdBy);
 
 		for (ResidentBean residentBean : residentBeans) {
-			ResidentDto residentDto = new ResidentDto();
+			ResidentDto residentDto = dtoCreatorUtil
+					.createResidentDto(residentBean);
 			String residentId = residentBean.getId();
 			// Calculate amount payable
-			Double amountPayable = paymentService
-					.calculateAmountPayable(residentId);
+			Double amountPayable = paymentService.calculateAmountPayable(
+					residentId, createdBy);
 			residentDto.setAmountPayable(amountPayable);
 			// Calculate amount due
 			residentDto.setAmountDue(paymentService.calculateAmountDue(
 					residentId, createdBy));
-			residentDto.setContactNo(residentBean.getContactNo());
-			residentDto.setFlatNo(residentBean.getFlatNo());
-			residentDto.setId(residentBean.getId());
-			residentDto.setName(residentBean.getName());
 			dashboardDto.getResidentDtos().add(residentDto);
 		}
 

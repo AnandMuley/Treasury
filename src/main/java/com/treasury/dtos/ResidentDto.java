@@ -13,6 +13,7 @@ public class ResidentDto {
 	private Double area;
 	private Double amountPayable;
 	private String createdBy;
+	private String gender;
 
 	public String getId() {
 		return id;
@@ -77,13 +78,23 @@ public class ResidentDto {
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
+	
+	
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
 	@Override
 	public String toString() {
 		return "ResidentDto [id=" + id + ", name=" + name + ", contactNo="
 				+ contactNo + ", flatNo=" + flatNo + ", amountDue=" + amountDue
 				+ ", area=" + area + ", amountPayable=" + amountPayable
-				+ ", createdBy=" + createdBy + "]";
+				+ ", createdBy=" + createdBy + ", gender=" + gender + "]";
 	}
 
 }

@@ -8,12 +8,14 @@ import com.treasury.beans.DateBean;
 import com.treasury.beans.NetBankingBean;
 import com.treasury.beans.PaymentBean;
 import com.treasury.beans.ResidentBean;
+import com.treasury.beans.SettingsBean;
 import com.treasury.beans.UserBean;
 import com.treasury.dtos.ChequeDto;
 import com.treasury.dtos.DateDto;
 import com.treasury.dtos.NetBankingDto;
 import com.treasury.dtos.PaymentDto;
 import com.treasury.dtos.ResidentDto;
+import com.treasury.dtos.SettingsDto;
 import com.treasury.dtos.UserDto;
 
 @Component
@@ -38,6 +40,7 @@ public class DtoCreatorUtil {
 		residentDto.setId(residentBean.getId());
 		residentDto.setName(residentBean.getName());
 		residentDto.setArea(residentBean.getArea());
+		residentDto.setGender(residentBean.getGender());
 		return residentDto;
 	}
 
@@ -85,6 +88,14 @@ public class DtoCreatorUtil {
 			chequeDto.setChequeNo(chequeBean.getChequeNo());
 		}
 		return chequeDto;
+	}
+
+	public SettingsDto createSettingsDto(SettingsBean settingsBean) {
+		SettingsDto settingsDto = new SettingsDto();
+		settingsDto.setCreatedBy(settingsBean.getCreatedBy());
+		settingsDto.setId(settingsBean.getId());
+		settingsDto.setMaintRate(settingsBean.getMaintRate());
+		return settingsDto;
 	}
 
 }

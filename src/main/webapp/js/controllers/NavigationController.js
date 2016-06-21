@@ -1,5 +1,6 @@
 controllers.controller('NavigationController',
-		['$scope','$location','$rootScope',function($scope,$location,$rootScope){
+		['$scope','$location','$rootScope','LoginService',
+		 function($scope,$location,$rootScope,loginService){
 	
 	$scope.tabs = [{
 		name : 'residents',
@@ -13,6 +14,9 @@ controllers.controller('NavigationController',
 	},{
 		name : 'dues',
 		path : 'dues'
+	},{
+		name : 'settings',
+		path : 'settings'
 	}];
 	
 	$scope.getSelectedTab = function(path){
@@ -33,6 +37,7 @@ controllers.controller('NavigationController',
 	
 	$scope.logout = function(){
 		$rootScope.authenticated=false;
+		loginService.removeAuthCookie();
 		$location.path('/');
 	}
 	

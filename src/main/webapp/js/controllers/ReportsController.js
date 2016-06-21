@@ -13,7 +13,9 @@ controllers.controller('ReportsController',
 		var paymentDtos = $scope.reports.paymentDtos;
 		for(var i=0;i<paymentDtos.length;i++){
 			var report = paymentDtos[i];
-			tot = tot + report.amount;
+			if(report.name.toLowerCase().indexOf($scope.filterText.toLowerCase())!=-1){
+				tot = tot + report.amount;
+			}
 		}
 		$scope.total=tot;
 	}

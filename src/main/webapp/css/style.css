@@ -15,8 +15,16 @@
 	src:url('fonts/Roboto-Regular.ttf') @ttf;
 }
 
+.text-align-center{
+	text-align: center;
+}
+
 .text-align-right{
 	text-align: right;
+}
+
+.footer{
+	color:var(--color-teal);
 }
 
 .total-amt-paid{
@@ -45,6 +53,10 @@
 
 .message-success{
 	color: var(--color-teal);
+}
+
+.message-info{
+	color:var(--color-teal);
 }
 
 #reports-panel .header{

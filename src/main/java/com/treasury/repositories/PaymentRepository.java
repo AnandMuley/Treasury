@@ -18,4 +18,6 @@ public interface PaymentRepository extends MongoRepository<PaymentBean, String> 
 	@Query(value = "{'residentId':{$in:?0}}")
 	List<PaymentBean> findAllByResidentIds(List<String> residentIds);
 
+	List<PaymentBean> findByResidentId(String residentId);
+
 }

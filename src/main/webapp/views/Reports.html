@@ -1,13 +1,15 @@
-<div layout="row" layout-align="center">
-	<div flex="50">
+<div ng-if="reports.paymentDtos.length==0" layout="row" layout-align="center">
+	<div class="message-info">No payment details logged yet !</div>
+</div>
+<div ng-if="reports.paymentDtos.length>0" layout="row" layout-align="center">
+	<div flex="60">
 		<md-input-container>
 			<label>Resident Name Filter</label>
 			<input ng-change="findTotal()" ng-model="filterText"/>
 		</md-input-container>
 	</div>
-	<div flex="10" class="md-padding"><span class="total-amt-paid">Total : &#8377; 1000</span></div>
 </div>
-<div layout="row" layout-align="center">
+<div ng-if="reports.paymentDtos.length>0" layout="row" layout-align="center">
 	<md-whiteframe id="reports-panel" class="md-whiteframe-4dp" flex="60">
 			<div layout="row" class="header">
 				<div class="md-padding row" flex="20">Sr.No</div>
