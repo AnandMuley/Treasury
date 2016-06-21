@@ -8,4 +8,14 @@ controllers.controller('ReportsController',
 		$scope.reports = paymentReports;
 	});
 	
+	$scope.findTotal = function(){
+		var tot = 0;
+		var paymentDtos = $scope.reports.paymentDtos;
+		for(var i=0;i<paymentDtos.length;i++){
+			var report = paymentDtos[i];
+			tot = tot + report.amount;
+		}
+		$scope.total=tot;
+	}
+
 }]);

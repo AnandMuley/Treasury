@@ -1,18 +1,32 @@
 <div layout="row" layout-align="center">
+	<div flex="50">
+		<md-input-container>
+			<label>Resident Name Filter</label>
+			<input ng-change="findTotal()" ng-model="filterText"/>
+		</md-input-container>
+	</div>
+	<div flex="10" class="md-padding"><span class="total-amt-paid">Total : &#8377; 1000</span></div>
+</div>
+<div layout="row" layout-align="center">
 	<md-whiteframe id="reports-panel" class="md-whiteframe-4dp" flex="60">
 			<div layout="row" class="header">
 				<div class="md-padding row" flex="20">Sr.No</div>
 				<div class="md-padding row" flex="20">Name</div>
-				<div class="md-padding row" flex="20">Amount</div>
+				<div class="md-padding row text-align-right" flex="20">Amount</div>
 				<div class="md-padding row" flex="20">Payment Dt</div>
 				<div class="md-padding row" flex="20">Mode</div>
 			</div>
-			<div class="content" layout="row" ng-repeat="report in reports.paymentDtos">
+			<div class="content" layout="row" ng-repeat="report in reports.paymentDtos|filter:{name:filterText}">
 				<div class="md-padding row" flex="20">{{$index+1}}</div>
 				<div class="md-padding row" flex="20">{{report.name}}</div>
-				<div class="md-padding row" flex="20">{{report.amount}}</div>
+				<div class="md-padding row text-align-right" flex="20">{{report.amount}}</div>
 				<div class="md-padding row" flex="20">{{report.paymentDt}}</div>
 				<div class="md-padding row" flex="20">{{report.mode|uppercase}}</div>
+			</div>
+			<div class="footer" layout="row">
+				<div class="md-padding row" flex="20">Summary</div>
+				<div class="md-padding row" flex="20"></div>
+				<div class="md-padding row text-align-right" flex="20">{{total}}</div>
 			</div>
 	</md-whiteframe>
 

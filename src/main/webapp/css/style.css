@@ -15,6 +15,14 @@
 	src:url('fonts/Roboto-Regular.ttf') @ttf;
 }
 
+.text-align-right{
+	text-align: right;
+}
+
+.total-amt-paid{
+	color:var(--color-teal);
+}
+
 .balcard{
 	background-color: var(--color-amber);
 }
